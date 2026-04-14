@@ -7,77 +7,76 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green-deep: #0d2818;
-    --green-mid: #1a4228;
-    --green-light: #2a6040;
-    --green-muted: #3d7a52;
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --gold-pale: #f5e9c8;
-    --cream: #f8f3e8;
-    --cream-dark: #ede4d0;
+    --green-deep: #006747;
+    --green-mid: #004d35;
+    --green-light: #1a8a5a;
+    --green-muted: #7aab8c;
+    --gold: #FFC72C;
+    --gold-light: #FFD54F;
+    --gold-pale: #FFF8E1;
+    --cream: #1b332a;
+    --cream-dark: #52695c;
     --brown: #8b6340;
     --brown-light: #b08050;
-    --red: #8b2020;
-    --red-light: #c04040;
-    --white: #fdfaf4;
-    --text-dark: #1a110a;
-    --text-mid: #3d2e1e;
-    --shadow: rgba(0,0,0,0.4);
+    --red: #c62828;
+    --red-light: #e53935;
+    --white: #ffffff;
+    --text-dark: #1b332a;
+    --text-mid: #3d5040;
+    --shadow: rgba(0,0,0,0.08);
+    --gradient-gold: linear-gradient(135deg, #FFC72C 0%, #FFD54F 100%);
+    --gradient-green: linear-gradient(135deg, #006747 0%, #004d35 100%);
+    --bg-page: #f5f5f0;
+    --bg-card: #ffffff;
+    --bg-card-hover: #fafaf7;
+    --border-light: #e0ddd5;
+    --border-green: rgba(0,103,71,0.15);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     font-family: 'EB Garamond', Georgia, serif;
-    background: var(--green-deep);
+    background: var(--bg-page);
     color: var(--cream);
     min-height: 100vh;
-    background-image:
-      radial-gradient(ellipse at 15% 40%, rgba(42,96,64,0.5) 0%, transparent 55%),
-      radial-gradient(ellipse at 85% 15%, rgba(26,66,40,0.6) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 90%, rgba(10,30,18,0.8) 0%, transparent 60%),
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.018'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   /* ── HEADER ── */
   .site-header {
-    background: linear-gradient(180deg, var(--green-deep) 0%, var(--green-mid) 100%);
-    border-bottom: 2px solid var(--gold);
-    padding: 28px 200px 24px 200px;
+    background: var(--green-deep);
+    border-bottom: 4px solid var(--gold);
+    padding: 12px 250px 8px 250px;
     text-align: center;
     position: relative;
     overflow: visible;
-    min-height: 160px;
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
   .header-badge { display: none; }
   .site-title { display: none; }
-  .site-header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='55' fill='none' stroke='%23c9a84c' stroke-width='0.3' stroke-opacity='0.15'/%3E%3Ccircle cx='60' cy='60' r='40' fill='none' stroke='%23c9a84c' stroke-width='0.3' stroke-opacity='0.1'/%3E%3C/svg%3E") center/300px repeat;
-    pointer-events: none;
-  }
+  .site-header::before { display: none; }
   .header-wordmark {
-    height: clamp(60px, 8vw, 100px);
+    height: clamp(100px, 14vw, 160px);
     width: auto;
-    max-width: 55%;
+    max-width: 85%;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
   }
+  .header-wordmark:hover { transform: scale(1.02); }
   .site-subtitle {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    color: var(--gold-light);
-    font-size: clamp(13px, 1.8vw, 20px);
-    margin-top: 8px;
-    opacity: 0.88;
-    letter-spacing: 0.5px;
+    color: var(--gold);
+    font-size: clamp(14px, 2vw, 22px);
+    margin-top: 10px;
+    opacity: 0.9;
+    letter-spacing: 0.8px;
     font-weight: 400;
   }
   .header-divider { display: none; }
@@ -86,27 +85,35 @@
   /* ── NAV ── */
   nav {
     background: var(--green-mid);
-    border-bottom: 1px solid rgba(201,168,76,0.3);
+    border-bottom: none;
     display: flex; flex-wrap: wrap; gap: 0;
-    padding: 0 20px;
+    padding: 0 25px;
     overflow-x: auto;
   }
   .nav-btn {
     background: none; border: none; cursor: pointer;
     font-family: 'Courier Prime', monospace;
-    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--cream-dark);
-    padding: 14px 20px;
-    border-bottom: 2px solid transparent;
-    transition: all 0.18s;
+    font-size: 11px; letter-spacing: 2.8px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    padding: 16px 22px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.25s ease;
     white-space: nowrap;
-    opacity: 0.75;
+    position: relative;
   }
-  .nav-btn:hover { color: var(--gold-light); opacity: 1; }
-  .nav-btn.active { color: var(--gold); border-bottom-color: var(--gold); opacity: 1; }
+  .nav-btn::after {
+    content: '';
+    position: absolute; bottom: 0; left: 50%; width: 0; height: 3px;
+    background: var(--gold);
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  .nav-btn:hover::after { width: 100%; left: 0; }
+  .nav-btn:hover { color: #ffffff; }
+  .nav-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .nav-btn.active::after { width: 100%; left: 0; }
 
   /* ── MAIN ── */
-  main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
+  main { max-width: 1300px; margin: 0 auto; padding: 40px 28px 100px; }
 
   .page { display: none; animation: pageIn 0.2s ease-out; }
   .page.active { display: block; }
@@ -115,201 +122,251 @@
   /* ── SECTION TITLES ── */
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 32px; font-weight: 700;
-    color: var(--gold);
-    border-bottom: 1px solid rgba(201,168,76,0.25);
-    padding-bottom: 14px; margin-bottom: 28px;
-    letter-spacing: -0.5px;
-    text-shadow: 0 2px 20px rgba(201,168,76,0.15);
+    font-size: 36px; font-weight: 700;
+    color: var(--green-deep);
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 16px; margin-bottom: 32px;
+    letter-spacing: -0.8px;
+    position: relative;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 0; width: 60px; height: 3px;
+    background: var(--gold);
   }
   .section-subtitle {
     font-family: 'EB Garamond', serif;
     font-style: italic; color: var(--cream-dark);
-    font-size: 16px; margin-top: -16px; margin-bottom: 24px;
-    opacity: 0.8;
+    font-size: 18px; margin-top: -18px; margin-bottom: 28px;
   }
 
   /* ── CARDS ── */
   .card {
-    background: rgba(26,66,40,0.5);
-    border: 1px solid rgba(201,168,76,0.25);
-    border-radius: 4px;
-    padding: 24px;
-    backdrop-filter: blur(4px);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    border-color: var(--border-green);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
   }
 
   /* ── STANDINGS TABLE ── */
   .standings-table { width: 100%; border-collapse: collapse; }
   .standings-table th {
     font-family: 'Courier Prime', monospace;
-    font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--gold); border-bottom: 2px solid rgba(201,168,76,0.3);
-    padding: 12px 12px; text-align: left;
-    background: rgba(0,0,0,0.2);
+    font-size: 10px; letter-spacing: 2.8px; text-transform: uppercase;
+    color: var(--green-deep); border-bottom: 2px solid var(--green-deep);
+    padding: 14px 14px; text-align: left;
+    background: var(--gold-pale);
   }
   .standings-table th.num { text-align: center; white-space: nowrap; }
   .standings-table td {
-    padding: 13px 12px;
-    font-family: 'EB Garamond', serif; font-size: 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 16px 14px;
+    font-family: 'EB Garamond', serif; font-size: 17px;
+    border-bottom: 1px solid var(--border-light);
     vertical-align: middle;
-    transition: background 0.12s;
+    transition: background 0.2s ease;
   }
-  .standings-table td.num { text-align: center; font-family: 'Courier Prime', monospace; font-size: 14px; white-space: nowrap; }
-  .standings-table tr:hover td { background: rgba(201,168,76,0.05); }
-  .standings-table tr.first td { color: var(--gold-light); }
+  .standings-table td.num { text-align: center; font-family: 'Courier Prime', monospace; font-size: 15px; white-space: nowrap; }
+  .standings-table tr:hover td { background: rgba(0,103,71,0.04); }
+  .standings-table tr.first td { color: var(--green-deep); font-weight: 600; }
   .rank-badge {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 26px; height: 26px; border-radius: 50%;
-    font-family: 'Courier Prime', monospace; font-size: 12px; font-weight: 700;
+    width: 30px; height: 30px; border-radius: 50%;
+    font-family: 'Courier Prime', monospace; font-size: 13px; font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
   }
   .rank-1 { background: var(--gold); color: var(--green-deep); }
-  .rank-2 { background: rgba(255,255,255,0.12); color: var(--cream-dark); }
-  .rank-3 { background: rgba(255,255,255,0.12); color: var(--cream-dark); }
-  .rank-n { background: rgba(255,255,255,0.06); color: var(--cream-dark); }
+  .rank-2 { background: #c0c0c0; color: var(--text-dark); }
+  .rank-3 { background: #cd7f32; color: var(--white); }
+  .rank-n { background: #eae8e3; color: var(--cream-dark); }
   .promote-badge {
-    font-family: 'Courier Prime', monospace; font-size: 9px;
-    letter-spacing: 1px; padding: 2px 6px; border-radius: 2px;
-    margin-left: 8px;
+    font-family: 'Courier Prime', monospace; font-size: 10px;
+    letter-spacing: 1.2px; padding: 3px 8px; border-radius: 4px;
+    margin-left: 10px;
   }
-  .promote { background: rgba(0,200,80,0.18); color: #00e060; border: 1px solid #00c050; font-weight: 700; }
-  .relegate { background: rgba(255,20,120,0.18); color: #ff4da6; border: 1px solid #ff1a8c; font-weight: 700; }
+  .promote { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; font-weight: 700; }
+  .relegate { background: #fce4ec; color: #c62828; border: 1px solid #ef9a9a; font-weight: 700; }
 
   /* ── TIER GRID ── */
-  .tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+  .tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); gap: 24px; }
+  .tier-grid .card { overflow: hidden; }
+  .tier-grid .card .standings-table { table-layout: fixed; }
+  .tier-grid .card .standings-table td,
+  .tier-grid .card .standings-table th { overflow: hidden; text-overflow: ellipsis; }
 
   /* ── SCHEDULE ── */
-  .week-block { margin-bottom: 32px; }
+  .week-block { margin-bottom: 36px; }
   .week-label {
-    font-family: 'Playfair Display', serif; font-size: 20px;
-    color: var(--gold); margin-bottom: 14px;
-    display: flex; align-items: center; gap: 12px;
+    font-family: 'Playfair Display', serif; font-size: 22px;
+    color: var(--green-deep); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 14px;
   }
-  .week-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.25); }
+  .week-label::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--border-light), transparent); }
   .matchup-row {
     display: flex; align-items: center;
-    background: rgba(26,66,40,0.4);
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 3px;
-    padding: 12px 18px; margin-bottom: 8px;
-    gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 14px 20px; margin-bottom: 10px;
+    gap: 18px;
+    transition: all 0.25s ease;
   }
-  .matchup-teams { flex: 1; font-size: 17px; }
+  .matchup-row:hover {
+    border-color: var(--border-green);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: translateX(4px);
+  }
+  .matchup-teams { flex: 1; font-size: 18px; }
   .vs-badge {
     font-family: 'Courier Prime', monospace; font-size: 11px;
-    color: var(--gold); opacity: 0.6; margin: 0 10px;
+    color: var(--cream-dark); opacity: 0.6; margin: 0 10px;
   }
   .matchup-score {
-    font-family: 'Courier Prime', monospace; font-size: 13px;
-    color: var(--gold-light); min-width: 80px; text-align: right;
+    font-family: 'Courier Prime', monospace; font-size: 20px;
+    color: var(--green-deep); min-width: 80px; text-align: right;
   }
 
   /* ── RESULT ENTRY ── */
-  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 700px) { .result-grid { grid-template-columns: 1fr; } }
   .result-card {
-    background: rgba(13,40,24,0.6);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 4px; padding: 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px; padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+  }
+  .result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
   .result-card h4 {
     font-family: 'Playfair Display', serif;
-    font-size: 16px; color: var(--gold-light); margin-bottom: 14px;
+    font-size: 20px; color: var(--green-deep); margin-bottom: 18px;
   }
-  .player-match { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .player-name-sm { font-size: 14px; min-width: 100px; flex: 1; }
+  .player-match { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .player-name-sm { font-size: 16px; min-width: 120px; flex: 1; }
   .result-input {
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(201,168,76,0.3);
-    color: var(--cream); font-family: 'Courier Prime', monospace;
-    font-size: 13px; padding: 5px 10px; border-radius: 3px; width: 90px;
-    text-align: center;
+    background: #f5f5f0; border: 1px solid var(--border-light);
+    color: var(--text-dark); font-family: 'Courier Prime', monospace;
+    font-size: 16px; padding: 8px 12px; border-radius: 6px; width: 100px;
+    text-align: center; transition: all 0.2s;
   }
-  .result-input:focus { outline: none; border-color: var(--gold); }
-  .result-input::placeholder { color: rgba(255,255,255,0.25); }
+  .result-input:focus { outline: none; border-color: var(--green-deep); background: #fff; }
+  .result-input::placeholder { color: #999; }
 
   /* ── BUTTONS ── */
   .btn {
-    font-family: 'Courier Prime', monospace; font-size: 11px;
+    font-family: 'Courier Prime', monospace; font-size: 12px;
     letter-spacing: 2px; text-transform: uppercase;
-    padding: 10px 24px; border-radius: 3px; cursor: pointer;
-    border: none; transition: all 0.2s;
+    padding: 12px 28px; border-radius: 4px; cursor: pointer;
+    border: none; transition: all 0.2s ease;
   }
   .btn-gold {
-    background: var(--gold); color: var(--green-deep); font-weight: 700;
+    background: var(--green-deep); color: #fff; font-weight: 700;
   }
-  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-gold:hover {
+    background: var(--green-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,103,71,0.3);
+  }
   .btn-outline {
-    background: transparent; color: var(--gold);
-    border: 1px solid var(--gold);
+    background: transparent; color: var(--green-deep);
+    border: 2px solid var(--green-deep);
   }
-  .btn-outline:hover { background: rgba(201,168,76,0.1); }
+  .btn-outline:hover {
+    background: rgba(0,103,71,0.06);
+    transform: translateY(-1px);
+  }
   .btn-red {
     background: var(--red); color: var(--white);
   }
-  .btn-red:hover { background: var(--red-light); }
+  .btn-red:hover {
+    background: var(--red-light);
+    transform: translateY(-1px);
+  }
 
   /* ── FORM ELEMENTS ── */
-  .form-group { margin-bottom: 16px; }
+  .form-group { margin-bottom: 20px; }
   .form-label {
-    font-family: 'Courier Prime', monospace; font-size: 10px;
+    font-family: 'Courier Prime', monospace; font-size: 11px;
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); display: block; margin-bottom: 6px;
+    color: var(--green-deep); display: block; margin-bottom: 8px;
   }
   .form-input, .form-select {
-    width: 100%; background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(201,168,76,0.3); color: var(--cream);
+    width: 100%; background: #fff;
+    border: 1px solid var(--border-light); color: var(--text-dark);
     font-family: 'EB Garamond', serif; font-size: 16px;
     padding: 8px 14px; border-radius: 3px;
   }
-  .form-input:focus, .form-select:focus { outline: none; border-color: var(--gold); }
-  .form-select option { background: var(--green-deep); }
+  .form-input:focus, .form-select:focus { outline: none; border-color: var(--green-deep); }
+  .form-select option { background: #fff; }
 
   /* ── WALL OF SHAME ── */
   .shame-entry {
-    display: flex; align-items: center; gap: 16px;
-    background: linear-gradient(135deg, rgba(139,32,32,0.18), rgba(80,16,16,0.1));
-    border: 1px solid rgba(139,32,32,0.3);
-    border-left: 4px solid var(--red);
-    padding: 16px 20px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 20px;
+    background: #fff;
+    border: 1px solid #f0d0d0;
+    border-left: 6px solid var(--red);
+    padding: 20px 24px; margin-bottom: 16px;
     border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-    transition: border-color 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
   }
-  .shame-entry:hover { border-color: rgba(180,60,60,0.5); }
-  .shame-icon { font-size: 24px; }
-  .shame-name { font-family: 'Playfair Display', serif; font-size: 18px; }
-  .shame-detail { font-size: 14px; color: var(--cream-dark); opacity: 0.8; margin-top: 2px; }
+  .shame-entry:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .shame-icon { font-size: 28px; }
+  .shame-name { font-family: 'Playfair Display', serif; font-size: 20px; }
+  .shame-detail { font-size: 16px; color: var(--cream-dark); opacity: 0.9; margin-top: 4px; }
   .shame-result {
-    font-family: 'Courier Prime', monospace; font-size: 20px;
-    color: var(--red-light); font-weight: 700; margin-left: auto;
+    font-family: 'Courier Prime', monospace; font-size: 22px;
+    color: var(--red); font-weight: 700; margin-left: auto;
   }
 
   /* ── HOLE IN ONE ── */
   .ace-entry {
-    display: flex; align-items: center; gap: 16px;
-    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
-    border: 1px solid rgba(201,168,76,0.35);
-    border-left: 4px solid var(--gold);
-    padding: 16px 20px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 20px;
+    background: var(--gold-pale);
+    border: 1px solid #e8d88c;
+    border-left: 6px solid var(--gold);
+    padding: 20px 24px; margin-bottom: 16px;
     border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 12px rgba(201,168,76,0.08);
-    transition: box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
   }
-  .ace-entry:hover { box-shadow: 0 4px 20px rgba(201,168,76,0.15); }
-  .ace-icon { font-size: 28px; }
-  .ace-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold-light); }
-  .ace-detail { font-size: 14px; color: var(--cream-dark); opacity: 0.8; margin-top: 2px; }
+  .ace-entry:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .ace-icon { font-size: 32px; }
+  .ace-name { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--green-deep); }
+  .ace-detail { font-size: 16px; color: var(--cream-dark); opacity: 0.9; margin-top: 4px; }
 
   /* ── SETUP / ADMIN ── */
-  .setup-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .setup-tabs { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
   .setup-tab {
-    font-family: 'Courier Prime', monospace; font-size: 11px;
+    font-family: 'Courier Prime', monospace; font-size: 12px;
     letter-spacing: 1.5px; text-transform: uppercase;
-    padding: 8px 18px; border-radius: 3px; cursor: pointer;
-    background: rgba(255,255,255,0.06); color: var(--cream-dark);
-    border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    padding: 10px 20px; border-radius: 4px; cursor: pointer;
+    background: #f5f5f0; color: var(--cream-dark);
+    border: 1px solid var(--border-light); transition: all 0.2s ease;
   }
-  .setup-tab.active { background: rgba(201,168,76,0.15); color: var(--gold); border-color: var(--gold); }
+  .setup-tab.active {
+    background: var(--green-deep); color: #fff;
+    border-color: var(--green-deep); font-weight: 700;
+  }
+  .setup-tab:hover:not(.active) {
+    background: #eae8e3;
+    border-color: var(--border-green);
+  }
 
   /* ── LANDING PAGE TOGGLE ── */
   .landing-option {
@@ -319,19 +376,19 @@
   .landing-option-inner {
     display: flex; align-items: center; gap: 14px;
     padding: 14px 18px;
-    background: rgba(0,0,0,0.2);
-    border: 2px solid rgba(201,168,76,0.15);
+    background: #f5f5f0;
+    border: 2px solid var(--border-light);
     border-radius: 6px;
     transition: all 0.2s;
   }
   .landing-option input:checked + .landing-option-inner {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.1);
-    box-shadow: 0 0 0 1px rgba(201,168,76,0.3);
+    border-color: var(--green-deep);
+    background: rgba(0,103,71,0.05);
+    box-shadow: 0 0 0 1px rgba(0,103,71,0.2);
   }
   .landing-option:hover .landing-option-inner {
-    border-color: rgba(201,168,76,0.4);
-    background: rgba(201,168,76,0.05);
+    border-color: rgba(0,103,71,0.3);
+    background: rgba(0,103,71,0.03);
   }
   .landing-icon { font-size: 26px; flex-shrink: 0; }
   .landing-option-inner > span:last-child {
@@ -350,28 +407,28 @@
   .roster-table th {
     font-family: 'Courier Prime', monospace; font-size: 10px;
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); border-bottom: 1px solid rgba(201,168,76,0.3);
+    color: var(--green-deep); border-bottom: 1px solid var(--border-light);
     padding: 8px 10px; text-align: left;
   }
   .roster-table td {
     padding: 8px 10px; font-size: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid var(--border-light);
   }
   .tier-pill {
     display: inline-block; font-family: 'Courier Prime', monospace;
     font-size: 10px; padding: 2px 8px; border-radius: 2px;
-    background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
+    background: #e8f5e9; color: var(--green-deep); border: 1px solid #a5d6a7;
   }
   .captain-pill {
     display: inline-block; font-family: 'Courier Prime', monospace;
     font-size: 9px; padding: 1px 6px; border-radius: 2px;
-    background: rgba(42,96,64,0.5); color: #7dd9a0; border: 1px solid #3d7a52;
+    background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7;
     margin-left: 4px;
   }
   .rookie-pill {
     display: inline-block; font-family: 'Courier Prime', monospace;
     font-size: 9px; padding: 1px 6px; border-radius: 2px;
-    background: rgba(176,128,80,0.3); color: var(--gold-light); border: 1px solid var(--brown);
+    background: var(--gold-pale); color: #8b6340; border: 1px solid #e8d88c;
     margin-left: 4px;
   }
 
@@ -380,15 +437,15 @@
     padding: 12px 18px; border-radius: 3px; margin-bottom: 20px;
     font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 1px;
   }
-  .notice-info { background: rgba(42,96,64,0.4); border: 1px solid var(--green-muted); color: #a0d8b0; }
-  .notice-warn { background: rgba(139,99,32,0.4); border: 1px solid var(--brown-light); color: var(--gold-light); }
+  .notice-info { background: #e8f5e9; border: 1px solid #a5d6a7; color: #2e7d32; }
+  .notice-warn { background: var(--gold-pale); border: 1px solid #e8d88c; color: #8b6340; }
 
   .toast {
     position: fixed; bottom: 30px; right: 30px;
-    background: var(--green-mid); border: 1px solid var(--gold);
-    color: var(--gold-light); font-family: 'Courier Prime', monospace;
+    background: var(--green-deep); border: 1px solid var(--gold);
+    color: #fff; font-family: 'Courier Prime', monospace;
     font-size: 13px; padding: 14px 22px; border-radius: 4px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     transform: translateY(100px); opacity: 0; transition: all 0.3s;
     z-index: 1000; pointer-events: none;
   }
@@ -403,23 +460,23 @@
   .mb-8 { margin-bottom: 8px; }
   .empty-state {
     text-align: center; padding: 48px 24px;
-    color: var(--cream-dark); opacity: 0.5;
+    color: #999;
     font-style: italic; font-size: 18px;
   }
   .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
   .stat-box {
     flex: 1; min-width: 130px;
-    background: rgba(26,66,40,0.5); border: 1px solid rgba(201,168,76,0.25);
+    background: var(--bg-card); border: 1px solid var(--border-light);
     border-radius: 4px; padding: 16px 20px; text-align: center;
   }
   .stat-val {
     font-family: 'Playfair Display', serif; font-size: 36px;
-    color: var(--gold); line-height: 1;
+    color: var(--green-deep); line-height: 1;
   }
   .stat-lbl {
     font-family: 'Courier Prime', monospace; font-size: 9px;
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--cream-dark); opacity: 0.7; margin-top: 6px;
+    color: var(--cream-dark); margin-top: 6px;
   }
 
   /* ── BOTTOM LEAGUE STATS ── */
@@ -429,27 +486,28 @@
   }
   .league-stat-box {
     flex: 1; min-width: 120px;
-    background: linear-gradient(145deg, rgba(16,50,28,0.7), rgba(8,28,16,0.8));
-    border: 1px solid rgba(201,168,76,0.22);
-    border-radius: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-top: 3px solid var(--green-deep);
+    border-radius: 4px;
     padding: 24px 16px 20px;
     text-align: center;
     transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 16px rgba(0,0,0,0.25);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
-  .league-stat-box:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.35); }
+  .league-stat-box:hover { border-top-color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
   .league-stat-val {
     font-family: 'Playfair Display', serif;
     font-size: clamp(36px, 5vw, 56px);
     font-weight: 700;
-    color: var(--gold);
+    color: var(--green-deep);
     line-height: 1;
     letter-spacing: -1px;
   }
   .league-stat-lbl {
     font-family: 'Courier Prime', monospace;
     font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--cream-dark); opacity: 0.55;
+    color: var(--cream-dark);
     margin-top: 10px;
   }
   @media (max-width: 600px) {
@@ -472,13 +530,16 @@
   .more-menu-btn {
     background: none; border: none; cursor: pointer;
     display: flex; flex-direction: column; align-items: center; gap: 4px;
-    padding: 12px 8px; color: var(--cream);
+    padding: 12px 8px; color: rgba(255,255,255,0.7);
     font-family: 'Courier Prime', monospace; font-size: 10px;
     letter-spacing: 1px; text-transform: uppercase;
     transition: color 0.15s;
   }
   .more-menu-btn:hover { color: var(--gold-light); }
   .more-menu-btn.active { color: var(--gold); }
+  #more-menu .more-menu-btn { color: var(--text-dark); background: #f5f5f0; border-radius: 4px; }
+  #more-menu .more-menu-btn:hover { background: #eae8e3; color: var(--text-dark); }
+  #more-menu .more-menu-btn.active { color: var(--green-deep); }
 
   /* ══════════════════════════════════════════
      MOBILE RESPONSIVE — full overhaul
@@ -490,13 +551,13 @@
       position: fixed; bottom: 0; left: 0; right: 0; top: auto;
       z-index: 1000;
       background: var(--green-deep);
-      border-top: 2px solid var(--gold);
+      border-top: 3px solid var(--gold);
       border-bottom: none;
       padding: 0;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       overflow: visible;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
     }
     nav#main-nav .nav-btn {
       padding: 8px 4px 10px;
@@ -510,7 +571,7 @@
     nav#main-nav .nav-btn.active {
       border-top-color: var(--gold);
       border-bottom: none;
-      background: rgba(201,168,76,0.08);
+      background: rgba(255,199,44,0.15);
     }
     nav#main-nav .nav-btn:nth-child(n+5) { display: none; }
     nav#main-nav .nav-btn:nth-child(4)   { display: flex; }
@@ -518,10 +579,11 @@
     main { padding: 16px 12px 88px; }
 
     .site-header { padding: 16px 120px 16px 110px; min-height: 110px; overflow: visible; }
-    .header-wordmark { height: 52px; max-width: 48%; }
+    .header-wordmark { height: 80px; max-width: 80%; }
+    .site-header { min-height: 90px; padding: 8px 120px 6px 110px; }
     .site-subtitle { font-size: 12px; margin-top: 4px; }
 
-    .section-title { font-size: 22px; margin-bottom: 14px; padding-bottom: 10px; }
+    .section-title { font-size: 22px; margin-bottom: 14px; padding-bottom: 10px; color: var(--green-deep); }
     .section-subtitle { font-size: 14px; margin-top: -10px; margin-bottom: 16px; }
 
     .card { padding: 14px 12px; }
@@ -615,60 +677,58 @@
   .bracket-col-label {
     font-family: 'Courier Prime', monospace; font-size: 9px;
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); opacity: 0.7; margin-bottom: 12px;
+    color: var(--green-deep); opacity: 0.7; margin-bottom: 12px;
   }
   .bracket-team {
-    background: rgba(26,66,40,0.6); border: 1px solid rgba(201,168,76,0.3);
+    background: #f5f5f0; border: 1px solid var(--border-light);
     border-radius: 4px; padding: 10px 16px; margin: 4px 0;
     font-family: 'EB Garamond', serif; font-size: 15px;
     min-width: 150px; text-align: center; position: relative;
   }
-  .bracket-team.winner { border-color: var(--gold); color: var(--gold-light); background: rgba(201,168,76,0.12); }
-  .bracket-team.champion { border-color: var(--gold); background: linear-gradient(135deg,rgba(201,168,76,0.25),rgba(201,168,76,0.08)); color: var(--gold); font-weight: 700; }
-  .bracket-team.tbd { opacity: 0.45; font-style: italic; color: var(--cream-dark); }
+  .bracket-team.winner { border-color: var(--green-deep); color: var(--green-deep); background: rgba(0,103,71,0.06); }
+  .bracket-team.champion { border-color: var(--gold); background: var(--gold-pale); color: var(--green-deep); font-weight: 700; }
+  .bracket-team.tbd { font-style: italic; color: #999; }
   .bracket-score {
     font-family: 'Courier Prime', monospace; font-size: 11px;
-    color: var(--gold); margin-top: 3px;
+    color: var(--green-deep); margin-top: 3px;
   }
   .bracket-connector {
     display: flex; flex-direction: column; justify-content: center;
     align-items: center; width: 40px; padding: 0 4px;
   }
   .bracket-line-v {
-    width: 2px; flex: 1; background: rgba(201,168,76,0.3);
+    width: 2px; flex: 1; background: var(--border-light);
   }
   .bracket-line-h {
-    height: 2px; width: 100%; background: rgba(201,168,76,0.3);
+    height: 2px; width: 100%; background: var(--border-light);
   }
   .bracket-dot {
     width: 8px; height: 8px; border-radius: 50%;
-    background: var(--gold); flex-shrink: 0;
+    background: var(--green-deep); flex-shrink: 0;
   }
 
   .playoff-match-block {
-    background: linear-gradient(160deg, rgba(16,52,30,0.7), rgba(8,28,16,0.85));
-    border: 1px solid rgba(201,168,76,0.18);
-    border-radius: 14px; padding: 28px 24px; margin-bottom: 28px;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+    background: var(--bg-card); border: 1px solid var(--border-light);
+    border-radius: 8px; padding: 28px 24px; margin-bottom: 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
   .playoff-final-block {
     border-color: var(--gold);
-    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(26,66,40,0.6));
-    box-shadow: 0 0 40px rgba(201,168,76,0.12);
+    background: var(--gold-pale);
   }
   .playoff-round-label {
     font-family: 'Courier Prime', monospace; font-size: 9px;
     letter-spacing: 4px; text-transform: uppercase;
-    color: var(--gold); opacity: 0.7; margin-bottom: 10px;
+    color: var(--green-deep); margin-bottom: 10px;
     display: inline-block;
-    background: rgba(201,168,76,0.08);
+    background: #e8f5e9;
     padding: 4px 12px; border-radius: 20px;
-    border: 1px solid rgba(201,168,76,0.15);
+    border: 1px solid #a5d6a7;
   }
-  .playoff-round-final { opacity: 1; font-size: 10px; color: var(--gold-light); }
+  .playoff-round-final { font-size: 10px; color: var(--green-deep); }
   .playoff-matchup-header {
     font-family: 'Playfair Display', serif; font-size: 26px;
-    color: var(--white); margin-bottom: 6px; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 6px; font-weight: 700;
     line-height: 1.2;
   }
   /* ══════════════════════════════════════════════
@@ -677,14 +737,13 @@
   .playoff-tier-grid { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
 
   .pog-card {
-    background: linear-gradient(135deg, rgba(13,42,26,0.85), rgba(8,28,18,0.9));
-    border: 1.5px solid rgba(201,168,76,0.18);
+    background: var(--bg-card); border: 1px solid var(--border-light);
     border-radius: 12px;
     padding: 18px 16px 14px;
     transition: border-color 0.25s, box-shadow 0.25s;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
-  .pog-card:hover { border-color: rgba(201,168,76,0.35); box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+  .pog-card:hover { border-color: var(--green-deep); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 
   /* Tier badge + clear button row */
   .pog-header-row {
@@ -694,25 +753,25 @@
   .pog-tier-badge {
     font-family: 'Courier Prime', monospace;
     font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); opacity: 0.6;
-    background: rgba(201,168,76,0.08);
+    color: var(--green-deep);
+    background: #e8f5e9;
     padding: 3px 10px; border-radius: 20px;
-    border: 1px solid rgba(201,168,76,0.15);
+    border: 1px solid #a5d6a7;
   }
 
   /* Player matchup line */
   .pog-matchup {
     font-family: 'Playfair Display', serif;
     font-size: 18px; font-weight: 600;
-    color: var(--cream); line-height: 1.3;
+    color: var(--text-dark); line-height: 1.3;
     margin-bottom: 4px;
     display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   }
   .pog-vs {
     font-family: 'Courier Prime', monospace;
-    font-size: 9px; color: var(--gold); opacity: 0.5;
+    font-size: 9px; color: var(--green-deep);
     letter-spacing: 2px; text-transform: uppercase;
-    background: rgba(201,168,76,0.08);
+    background: rgba(0,103,71,0.06);
     padding: 2px 7px; border-radius: 3px;
     flex-shrink: 0;
   }
@@ -720,20 +779,20 @@
   /* Tee time */
   .pog-time-input {
     width: 100%; box-sizing: border-box;
-    background: rgba(201,168,76,0.05);
-    border: 1px dashed rgba(201,168,76,0.2);
+    background: #f5f5f0;
+    border: 1px dashed var(--border-light);
     border-radius: 6px;
-    color: var(--gold);
+    color: var(--text-dark);
     font-family: 'Courier Prime', monospace;
     font-size: 12px; letter-spacing: 0.5px;
     padding: 7px 12px;
     margin: 10px 0;
   }
-  .pog-time-input:focus { outline: none; border-style: solid; border-color: var(--gold); color: var(--cream); }
-  .pog-time-input::placeholder { opacity: 0.3; color: var(--cream-dark); }
+  .pog-time-input:focus { outline: none; border-style: solid; border-color: var(--green-deep); color: var(--text-dark); }
+  .pog-time-input::placeholder { opacity: 0.4; color: #999; }
   .pog-tee-time-display {
     font-family: 'Courier Prime', monospace;
-    font-size: 11px; color: var(--gold); opacity: 0.75;
+    font-size: 11px; color: var(--green-deep); opacity: 0.75;
     margin: 6px 0; letter-spacing: 1px;
     display: flex; align-items: center; gap: 6px;
   }
@@ -747,10 +806,10 @@
   }
   .pog-btn {
     padding: 13px 8px;
-    background: rgba(0,0,0,0.25);
-    border: 1.5px solid rgba(255,255,255,0.08);
+    background: #f5f5f0;
+    border: 1px solid var(--border-light);
     border-radius: 8px;
-    color: var(--cream-dark);
+    color: var(--text-dark);
     font-family: 'Courier Prime', monospace;
     font-size: 12px; letter-spacing: 0.5px;
     cursor: pointer;
@@ -762,67 +821,66 @@
     word-break: break-word;
   }
   .pog-btn:hover {
-    border-color: rgba(201,168,76,0.4);
-    background: rgba(201,168,76,0.08);
-    color: var(--cream);
+    border-color: var(--green-deep);
+    background: rgba(0,103,71,0.04);
+    color: var(--green-deep);
   }
   .pog-btn:active { transform: scale(0.96); }
   .pog-btn-active {
-    background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.1)) !important;
-    border-color: var(--gold) !important;
-    color: var(--gold) !important;
+    background: rgba(0,103,71,0.08) !important;
+    border-color: var(--green-deep) !important;
+    color: var(--green-deep) !important;
     font-weight: 700;
-    box-shadow: 0 0 12px rgba(201,168,76,0.15);
   }
   .pog-winner-row .pog-btn:nth-child(2) {
     font-size: 10px; letter-spacing: 1px;
-    border-color: rgba(255,255,255,0.05);
-    color: var(--cream-dark); opacity: 0.8;
+    border-color: var(--border-light);
+    color: var(--text-dark); opacity: 0.8;
   }
 
   /* Score input */
   .pog-score-input {
     width: 100%; box-sizing: border-box;
-    background: rgba(0,0,0,0.15);
-    border: 1px solid rgba(255,255,255,0.07);
+    background: #f5f5f0;
+    border: 1px solid var(--border-light);
     border-radius: 6px;
-    color: var(--cream-dark);
+    color: var(--text-dark);
     font-family: 'Courier Prime', monospace;
     font-size: 13px;
     padding: 10px 14px;
     min-height: 42px;
     transition: border-color 0.15s;
   }
-  .pog-score-input:focus { outline: none; border-color: rgba(201,168,76,0.4); color: var(--cream); }
+  .pog-score-input:focus { outline: none; border-color: var(--green-deep); color: var(--text-dark); }
   .pog-score-input::placeholder { opacity: 0.25; font-size: 11px; }
 
   /* Readonly result display */
   .pog-result-display {
     display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
     margin-top: 8px; padding-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid var(--border-light);
   }
   .pog-score-badge {
     font-family: 'Courier Prime', monospace; font-size: 12px;
-    background: rgba(0,0,0,0.3); color: var(--cream-dark);
+    background: #f5f5f0; color: var(--text-dark);
     padding: 4px 12px; border-radius: 4px;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--border-light);
   }
   .pog-winner-badge {
     font-family: 'Playfair Display', serif;
-    font-size: 15px; color: var(--gold-light); font-weight: 700;
+    font-size: 15px; color: var(--green-deep); font-weight: 700;
   }
   .pog-no-result {
     font-family: 'Courier Prime', monospace;
-    font-size: 10px; color: var(--cream-dark); opacity: 0.25;
+    font-size: 10px; color: #999;
     letter-spacing: 2px; text-transform: uppercase;
   }
 
   /* Clear button */
   .pog-clear-btn {
     background: none;
-    border: 1px solid rgba(180,60,60,0.35);
-    color: rgba(255,100,100,0.7);
+    border: 1px solid #ef9a9a;
+    color: #c62828;
     font-family: 'Courier Prime', monospace;
     font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
     padding: 3px 10px; border-radius: 3px;
@@ -830,25 +888,25 @@
     transition: all 0.15s;
     -webkit-tap-highlight-color: transparent;
   }
-  .pog-clear-btn:hover { border-color: rgba(255,80,80,0.6); color: rgba(255,120,120,0.9); background: rgba(180,40,40,0.12); }
+  .pog-clear-btn:hover { border-color: #e57373; color: #b71c1c; background: rgba(198,40,40,0.06); }
 
   /* ── PLAYOFF SCHEDULE INPUT ── */
   .playoff-schedule-row { display:flex; align-items:center; gap:10px; margin:6px 0 14px; }
   .playoff-schedule-icon { font-size:16px; flex-shrink:0; }
   .playoff-schedule-input {
-    flex:1; background:rgba(0,0,0,0.2); border:1px solid rgba(201,168,76,0.2);
-    border-radius:4px; color:var(--cream-dark);
+    flex:1; background:#f5f5f0; border:1px solid var(--border-light);
+    border-radius:4px; color:var(--text-dark);
     font-family:'Courier Prime',monospace; font-size:12px; padding:7px 12px;
   }
-  .playoff-schedule-input:focus { outline:none; border-color:var(--gold); color:var(--cream); }
+  .playoff-schedule-input:focus { outline:none; border-color:var(--green-deep); color:var(--text-dark); }
   .playoff-schedule-input::placeholder { opacity:0.4; }
 
   .playoff-summary {
     margin-top: 20px; padding: 16px 20px;
-    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(13,42,26,0.4));
+    background: #f5f5f0;
     border-radius: 8px;
-    border: 1px solid rgba(201,168,76,0.2);
-    border-left: 3px solid var(--gold);
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--green-deep);
     font-family: 'Playfair Display', serif; font-size: 18px;
   }
   .playoff-save-btn { margin-top: 16px; }
@@ -856,30 +914,26 @@
   /* Champion banner */
   .champion-banner {
     text-align: center; padding: 48px 24px;
-    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(26,66,40,0.5));
+    background: var(--gold-pale);
     border: 2px solid var(--gold);
     border-radius: 8px; margin-top: 32px;
-    animation: champGlow 2s ease-in-out infinite alternate;
-  }
-  @keyframes champGlow {
-    from { box-shadow: 0 0 20px rgba(201,168,76,0.2); }
-    to   { box-shadow: 0 0 60px rgba(201,168,76,0.5); }
+    box-shadow: 0 2px 8px rgba(255,199,44,0.2);
   }
   .champion-trophy { font-size: 64px; margin-bottom: 12px; }
-  .champion-label { font-family:'Courier Prime',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); opacity:0.8; margin-bottom:8px; }
-  .champion-name { font-family:'Playfair Display',serif; font-size:42px; font-weight:900; color:var(--gold-light); }
+  .champion-label { font-family:'Courier Prime',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--green-deep); margin-bottom:8px; }
+  .champion-name { font-family:'Playfair Display',serif; font-size:42px; font-weight:900; color:var(--green-deep); }
   /* ── PLAYOFF SCHEDULE PAGE ── */
   .pschedule-day-block {
     margin-bottom: 32px;
   }
   .pschedule-day-header {
     display: flex; align-items: baseline; justify-content: space-between;
-    border-bottom: 2px solid rgba(201,168,76,0.3);
+    border-bottom: 2px solid var(--border-light);
     padding-bottom: 10px; margin-bottom: 14px;
   }
   .pschedule-date {
     font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 700; color: var(--gold);
+    font-size: 22px; font-weight: 700; color: var(--green-deep);
   }
   .pschedule-week-label {
     font-family: 'Courier Prime', monospace;
@@ -891,17 +945,16 @@
     display: grid;
     grid-template-columns: 90px 1fr auto;
     gap: 12px; align-items: center;
-    background: linear-gradient(135deg, rgba(16,50,28,0.6), rgba(8,28,16,0.7));
-    border: 1px solid rgba(201,168,76,0.15);
+    background: var(--bg-card); border: 1px solid var(--border-light);
     border-radius: 10px; padding: 14px 16px;
     transition: border-color 0.2s;
   }
-  .pschedule-match-row:hover { border-color: rgba(201,168,76,0.3); }
+  .pschedule-match-row:hover { border-color: var(--green-deep); }
   .pschedule-time {
     font-family: 'Courier Prime', monospace;
     font-size: 16px; font-weight: 700;
-    color: var(--gold); text-align: center;
-    border-right: 1px solid rgba(201,168,76,0.15);
+    color: var(--green-deep); text-align: center;
+    border-right: 1px solid var(--border-light);
     padding-right: 12px;
   }
   .pschedule-tbd {
@@ -921,7 +974,7 @@
   }
   .pschedule-vs {
     font-family: 'Courier Prime', monospace;
-    font-size: 9px; color: var(--gold); opacity: 0.4;
+    font-size: 9px; color: var(--green-deep);
     letter-spacing: 1px;
   }
   .pschedule-teams {
@@ -932,90 +985,104 @@
   .pschedule-result-col { text-align: right; }
   .pschedule-result {
     font-family: 'Courier Prime', monospace; font-size: 11px;
-    background: rgba(0,180,80,0.15); color: #00e060;
-    border: 1px solid rgba(0,180,80,0.3);
+    background: #e8f5e9; color: #2e7d32;
+    border: 1px solid #a5d6a7;
     padding: 4px 10px; border-radius: 20px;
     white-space: nowrap;
   }
   .pschedule-pending {
-    background: rgba(201,168,76,0.08); color: var(--cream-dark);
-    border-color: rgba(201,168,76,0.15); opacity: 0.6;
+    background: #f5f5f0; color: #999;
+    border-color: var(--border-light);
   }
   @media (max-width: 600px) {
     .pschedule-match-row { grid-template-columns: 70px 1fr; grid-template-rows: auto auto; }
     .pschedule-result-col { grid-column: 2; margin-top: -4px; }
-    .pschedule-time { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); padding-bottom: 8px; padding-right: 0; grid-row: 1; }
+    .pschedule-time { border-right: none; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; padding-right: 0; grid-row: 1; }
     .pschedule-players { font-size: 14px; }
   }
 
   /* ── ADMIN QUICK-POST BAR ── */
   .admin-quick-bar {
-    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(13,42,26,0.6));
-    border: 1px solid rgba(201,168,76,0.25);
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-bottom: 20px;
+    background: var(--gold-pale);
+    border: 1px solid #e8d88c;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 10px;
+    flex-wrap: wrap; gap: 12px;
   }
-  .admin-quick-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .admin-quick-btns { display: flex; gap: 12px; flex-wrap: wrap; }
   .admin-quick-btn {
-    background: rgba(201,168,76,0.12);
-    border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold);
+    background: var(--green-deep);
+    border: 1px solid var(--green-deep);
+    color: #fff;
     font-family: 'Courier Prime', monospace;
-    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-    padding: 9px 16px; border-radius: 6px;
-    cursor: pointer; transition: all 0.15s;
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 10px 18px; border-radius: 8px;
+    cursor: pointer; transition: all 0.3s ease;
     -webkit-tap-highlight-color: transparent;
   }
-  .admin-quick-btn:hover { background: rgba(201,168,76,0.22); border-color: var(--gold); }
-  .admin-quick-btn:active { transform: scale(0.97); }
+  .admin-quick-btn:hover {
+    background: var(--green-mid);
+  }
+  .admin-quick-btn:active { transform: scale(0.98); }
   .admin-quick-status {
-    font-family: 'Courier Prime', monospace; font-size: 10px;
-    color: var(--cream-dark); opacity: 0.5; letter-spacing: 1px;
+    font-family: 'Courier Prime', monospace; font-size: 11px;
+    color: var(--cream-dark); opacity: 0.6; letter-spacing: 1px;
   }
   .announcement-banner {
-    background: linear-gradient(135deg, rgba(201,168,76,0.18), rgba(26,66,40,0.5));
-    border: 1px solid var(--gold);
-    border-left: 4px solid var(--gold);
-    border-radius: 0 4px 4px 0;
-    padding: 14px 20px;
-    margin-bottom: 24px;
-    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--gold-pale);
+    border: 1px solid #e8d88c;
+    border-left: 6px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 24px;
+    margin-bottom: 28px;
+    display: flex; align-items: flex-start; gap: 16px;
     animation: bannerPulse 3s ease-in-out infinite alternate;
   }
   @keyframes bannerPulse {
-    from { box-shadow: 0 0 0 rgba(201,168,76,0); }
-    to   { box-shadow: 0 0 18px rgba(201,168,76,0.2); }
+    from { box-shadow: none; }
+    to   { box-shadow: none; }
   }
-  .banner-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .banner-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
   .banner-text { flex: 1; }
-  .banner-headline { font-family:'EB Garamond',serif; font-size:15px; font-weight:400; color:var(--cream); line-height:1.5; white-space:pre-line; overflow:hidden; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; }
-  .banner-meta { font-family:'Courier Prime',monospace; font-size:10px; letter-spacing:1px; color:var(--cream-dark); opacity:0.6; margin-top:4px; }
-  .banner-more { font-family:'Courier Prime',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); opacity:0.7; cursor:pointer; background:none; border:none; padding:0; flex-shrink:0; align-self:center; transition:opacity 0.15s; }
+  .banner-headline { font-family:'EB Garamond',serif; font-size:16px; font-weight:400; color:var(--text-dark); line-height:1.5; white-space:pre-line; overflow:hidden; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; }
+  .banner-meta { font-family:'Courier Prime',monospace; font-size:11px; letter-spacing:1px; color:var(--cream-dark); opacity:0.7; margin-top:6px; }
+  .banner-more { font-family:'Courier Prime',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--green-deep); opacity:0.8; cursor:pointer; background:none; border:none; padding:0; flex-shrink:0; align-self:center; transition:opacity 0.3s; }
   .banner-more:hover { opacity:1; }
 
   /* ── ANNOUNCEMENT FEED ── */
-  .announcement-card { background:rgba(26,66,40,0.4); border:1px solid rgba(201,168,76,0.2); border-left:3px solid var(--gold); border-radius:0 4px 4px 0; padding:18px 20px; margin-bottom:14px; }
-  .announcement-body { font-family:'EB Garamond',serif; font-size:16px; line-height:1.6; color:var(--cream); white-space:pre-line; font-weight:400; }
-  .announcement-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:10px; }
-  .announcement-author { font-family:'Courier Prime',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); opacity:0.75; }
-  .announcement-ts { font-family:'Courier Prime',monospace; font-size:10px; color:var(--cream-dark); opacity:0.5; }
+  .announcement-card { 
+    background: var(--bg-card);
+    border:1px solid var(--border-light); 
+    border-left:4px solid var(--green-deep); 
+    border-radius:0 8px 8px 0; 
+    padding:20px 24px; 
+    margin-bottom:16px;
+    transition: all 0.3s ease;
+  }
+  .announcement-card:hover {
+    transform: translateX(2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .announcement-body { font-family:'EB Garamond',serif; font-size:17px; line-height:1.6; color:var(--text-dark); white-space:pre-line; font-weight:400; }
+  .announcement-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:12px; }
+  .announcement-author { font-family:'Courier Prime',monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-deep); }
+  .announcement-ts { font-family:'Courier Prime',monospace; font-size:11px; color:#999; }
 
   /* ── MATCH RESULTS LOG ── */
-  .results-week-block { margin-bottom:28px; }
-  .results-week-label { font-family:'Playfair Display',serif; font-size:18px; color:var(--gold); margin-bottom:12px; display:flex; align-items:center; gap:12px; }
-  .results-week-label::after { content:''; flex:1; height:1px; background:rgba(201,168,76,0.2); }
-  .result-log-header { display:grid; grid-template-columns:60px 1fr 1fr 110px 110px; gap:8px; padding:6px 12px 8px; border-bottom:1px solid rgba(201,168,76,0.25); margin-bottom:4px; }
-  .result-log-header span { font-family:'Courier Prime',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); }
-  .result-log-row { display:grid; grid-template-columns:60px 1fr 1fr 110px 110px; gap:8px; align-items:center; padding:8px 12px; border-bottom:1px solid rgba(255,255,255,0.04); font-size:14px; }
+  .results-week-block { margin-bottom:32px; }
+  .results-week-label { font-family:'Playfair Display',serif; font-size:20px; color:var(--green-deep); margin-bottom:16px; display:flex; align-items:center; gap:14px; }
+  .results-week-label::after { content:''; flex:1; height:2px; background: linear-gradient(90deg, var(--border-light), transparent); }
+  .result-log-header { display:grid; grid-template-columns:60px 1fr 1fr 110px 110px; gap:10px; padding:8px 16px 10px; border-bottom:1px solid var(--border-light); margin-bottom:6px; }
+  .result-log-header span { font-family:'Courier Prime',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-deep); }
+  .result-log-row { display:grid; grid-template-columns:60px 1fr 1fr 110px 110px; gap:10px; align-items:center; padding:10px 16px; border-bottom:1px solid var(--border-light); font-size:15px; transition: background 0.2s; }
   .result-log-row:last-child { border-bottom:none; }
-  .result-log-row:hover { background:rgba(201,168,76,0.04); }
-  .result-log-tier { font-family:'Courier Prime',monospace; font-size:11px; color:var(--gold); text-align:center; }
-  .result-log-score { font-family:'Courier Prime',monospace; font-size:12px; color:var(--cream-dark); text-align:center; }
-  .result-log-ts { font-family:'Courier Prime',monospace; font-size:9px; color:var(--cream-dark); opacity:0.4; }
-  .result-amended { font-family:'Courier Prime',monospace; font-size:8px; color:var(--red-light); letter-spacing:1px; padding:1px 5px; border:1px solid var(--red-light); border-radius:2px; opacity:0.7; display:inline-block; margin-left:4px; }
+  .result-log-row:hover { background:rgba(0,103,71,0.03); }
+  .result-log-tier { font-family:'Courier Prime',monospace; font-size:12px; color:var(--green-deep); text-align:center; }
+  .result-log-score { font-family:'Courier Prime',monospace; font-size:13px; color:var(--cream-dark); text-align:center; }
+  .result-log-ts { font-family:'Courier Prime',monospace; font-size:10px; color:var(--cream-dark); opacity:0.5; }
+  .result-amended { font-family:'Courier Prime',monospace; font-size:9px; color:var(--red); letter-spacing:1px; padding:2px 6px; border:1px solid #ef9a9a; border-radius:3px; display:inline-block; margin-left:6px; }
   @media (max-width:600px) {
     .result-log-row, .result-log-header { grid-template-columns:40px 1fr 1fr 80px; }
     .result-log-row>:last-child, .result-log-header>:last-child { display:none; }
@@ -1023,34 +1090,38 @@
 
   /* ── MEDIA WALL ── */
   .media-type-tab {
-    flex: 1; padding: 9px 8px;
+    flex: 1; padding: 12px 10px;
     background: transparent;
-    border: none; border-right: 1px solid rgba(201,168,76,0.25);
+    border: none; border-right: 1px solid var(--border-light);
     color: var(--cream-dark); font-family: 'Courier Prime', monospace;
-    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.15s;
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s ease;
   }
   .media-type-tab:last-child { border-right: none; }
-  .media-type-tab:hover { background: rgba(201,168,76,0.08); color: var(--cream); }
-  .media-type-tab.active { background: rgba(201,168,76,0.15); color: var(--gold); }
+  .media-type-tab:hover { background: #f5f5f0; color: var(--text-dark); }
+  .media-type-tab.active { 
+    background: var(--green-deep); color: #fff; 
+  }
 
   .media-feed-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
   }
   .media-card {
-    background: linear-gradient(145deg, rgba(16,50,28,0.7), rgba(8,28,16,0.8));
-    border: 1px solid rgba(201,168,76,0.18);
-    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
     overflow: hidden;
-    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 3px 16px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
     display: flex; flex-direction: column;
   }
-  .media-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+  .media-card:hover { 
+    border-color: var(--border-green);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
   .media-card-media {
-    width: 100%; background: rgba(0,0,0,0.3);
+    width: 100%; background: #f5f5f0;
     min-height: 180px; max-height: 340px;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden; position: relative;
@@ -1080,46 +1151,50 @@
     font-style: italic; color: var(--cream);
     text-align: center; line-height: 1.5;
   }
-  .media-card-body { padding: 14px 16px; flex: 1; }
+  .media-card-body { padding: 18px 20px; flex: 1; }
   .media-card-caption {
     font-family: 'EB Garamond', serif;
-    font-size: 16px; line-height: 1.55; color: var(--cream);
-    margin-bottom: 10px;
+    font-size: 18px; line-height: 1.6; color: var(--cream);
+    margin-bottom: 12px;
   }
   .media-card-meta {
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 6px; margin-top: 8px;
+    flex-wrap: wrap; gap: 8px; margin-top: 10px;
   }
   .media-card-author {
-    font-family: 'Courier Prime', monospace; font-size: 10px;
-    letter-spacing: 1px; color: var(--gold); opacity: 0.8;
+    font-family: 'Courier Prime', monospace; font-size: 11px;
+    letter-spacing: 1.5px; color: var(--green-deep);
   }
   .media-card-ts {
-    font-family: 'Courier Prime', monospace; font-size: 9px;
-    color: var(--cream-dark); opacity: 0.45;
+    font-family: 'Courier Prime', monospace; font-size: 10px;
+    color: var(--cream-dark); opacity: 0.6;
   }
   .media-delete-btn {
-    background: none; border: 1px solid rgba(139,32,32,0.4);
-    color: var(--red-light); font-family: 'Courier Prime', monospace;
-    font-size: 9px; letter-spacing: 1px; padding: 3px 10px;
-    border-radius: 2px; cursor: pointer; opacity: 0.7;
-    transition: opacity 0.15s, background 0.15s;
+    background: none; border: 1px solid #ef9a9a;
+    color: #c62828; font-family: 'Courier Prime', monospace;
+    font-size: 10px; letter-spacing: 1.5px; padding: 4px 12px;
+    border-radius: 4px; cursor: pointer;
+    transition: all 0.3s ease;
   }
-  .media-delete-btn:hover { opacity: 1; background: rgba(139,32,32,0.2); }
+  .media-delete-btn:hover { 
+    opacity: 1; background: rgba(139,32,32,0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(139,32,32,0.3);
+  }
   .media-empty {
-    text-align: center; padding: 60px 20px;
+    text-align: center; padding: 80px 20px;
     font-family: 'EB Garamond', serif; font-style: italic;
-    color: var(--cream-dark); opacity: 0.5; font-size: 18px;
+    color: var(--cream-dark); opacity: 0.6; font-size: 20px;
   }
   .media-link-icon { font-size: 40px; }
   .media-link-domain {
     font-family: 'Courier Prime', monospace; font-size: 10px;
-    color: var(--gold); letter-spacing: 1px; opacity: 0.7;
+    color: var(--green-deep); letter-spacing: 1px; opacity: 0.7;
   }
   .media-link-btn {
     display: inline-block; padding: 8px 18px;
-    background: rgba(201,168,76,0.15); border: 1px solid var(--gold);
-    border-radius: 3px; color: var(--gold);
+    background: rgba(0,103,71,0.06); border: 1px solid var(--green-deep);
+    border-radius: 3px; color: var(--green-deep);
     font-family: 'Courier Prime', monospace; font-size: 10px;
     letter-spacing: 1.5px; text-decoration: none; text-transform: uppercase;
     transition: background 0.15s;
@@ -1131,64 +1206,66 @@
 
   /* ── AUDIT LOG ── */
   .audit-entry {
-    background: rgba(13,40,24,0.5);
-    border: 1px solid rgba(201,168,76,0.12);
-    border-radius: 4px;
-    margin-bottom: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    margin-bottom: 12px;
     overflow: hidden;
-    transition: border-color 0.15s;
+    transition: all 0.3s ease;
   }
-  .audit-entry:hover { border-color: rgba(201,168,76,0.3); }
+  .audit-entry:hover { 
+    border-color: var(--border-light);
+  }
   .audit-entry.amended-entry {
-    border-color: rgba(139,32,32,0.4);
-    background: rgba(139,32,32,0.06);
+    border-color: #ef9a9a;
+    background: #fce4ec;
   }
   .audit-header {
     display: grid;
     grid-template-columns: 50px 1fr 1fr 110px 120px 140px 110px;
-    gap: 6px; align-items: center;
-    padding: 10px 14px;
-    font-size: 13px;
+    gap: 8px; align-items: center;
+    padding: 14px 18px;
+    font-size: 14px;
   }
-  .audit-tier { font-family:'Courier Prime',monospace; font-size:11px; color:var(--gold); }
-  .audit-score { font-family:'Courier Prime',monospace; font-size:12px; color:var(--cream-dark); }
-  .audit-ts { font-family:'Courier Prime',monospace; font-size:10px; color:var(--cream-dark); opacity:0.5; }
+  .audit-tier { font-family:'Courier Prime',monospace; font-size:12px; color:var(--green-deep); }
+  .audit-score { font-family:'Courier Prime',monospace; font-size:13px; color:var(--cream-dark); }
+  .audit-ts { font-family:'Courier Prime',monospace; font-size:11px; color:var(--cream-dark); opacity:0.6; }
   .audit-by {
-    font-family:'Courier Prime',monospace; font-size:10px;
-    padding: 2px 8px; border-radius: 3px; text-align:center;
+    font-family:'Courier Prime',monospace; font-size:11px;
+    padding: 4px 10px; border-radius: 6px; text-align:center;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  .audit-by.admin { background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid rgba(201,168,76,0.3); }
-  .audit-by.captain { background:rgba(42,96,64,0.3); color:#7dd9a0; border:1px solid #3d7a52; }
-  .audit-by.system { background:rgba(255,255,255,0.05); color:var(--cream-dark); opacity:0.5; border:1px solid rgba(255,255,255,0.08); }
+  .audit-by.admin { background: var(--gold); color:var(--green-deep); border:1px solid #e8d88c; }
+  .audit-by.captain { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+  .audit-by.system { background:#f5f5f0; color:#999; border:1px solid var(--border-light); }
   .audit-amended-badge {
-    font-family:'Courier Prime',monospace; font-size:8px; letter-spacing:1.5px;
-    text-transform:uppercase; padding:2px 7px; border-radius:2px;
-    background:rgba(139,32,32,0.3); color:var(--red-light); border:1px solid var(--red-light);
+    font-family:'Courier Prime',monospace; font-size:9px; letter-spacing:1.5px;
+    text-transform:uppercase; padding:3px 8px; border-radius:4px;
+    background: #fce4ec; color:#c62828; border:1px solid #ef9a9a;
   }
   .audit-current-badge {
-    font-family:'Courier Prime',monospace; font-size:8px; letter-spacing:1.5px;
-    text-transform:uppercase; padding:2px 7px; border-radius:2px;
-    background:rgba(0,180,70,0.15); color:#00e060; border:1px solid #00c050;
+    font-family:'Courier Prime',monospace; font-size:9px; letter-spacing:1.5px;
+    text-transform:uppercase; padding:3px 8px; border-radius:4px;
+    background: #e8f5e9; color:#2e7d32; border:1px solid #a5d6a7;
   }
   .audit-matchup-header {
-    background: rgba(0,0,0,0.25);
-    padding: 6px 14px;
-    font-family:'Courier Prime',monospace; font-size:10px;
-    letter-spacing:1.5px; text-transform:uppercase; color:var(--gold);
-    opacity:0.7; border-bottom:1px solid rgba(255,255,255,0.05);
+    background: #f5f5f0;
+    padding: 10px 18px;
+    font-family:'Courier Prime',monospace; font-size:11px;
+    letter-spacing:1.5px; text-transform:uppercase; color:var(--green-deep);
+    border-bottom:1px solid var(--border-light);
     display:flex; align-items:center; justify-content:space-between;
   }
-  .audit-week-block { margin-bottom:32px; }
+  .audit-week-block { margin-bottom:36px; }
   .audit-col-header {
     display:grid;
     grid-template-columns: 50px 1fr 1fr 110px 120px 140px 110px;
-    gap:6px; padding:6px 14px 8px;
-    border-bottom:1px solid rgba(201,168,76,0.2); margin-bottom:6px;
+    gap:8px; padding:8px 18px 10px;
+    border-bottom:1px solid var(--border-light); margin-bottom:8px;
   }
   .audit-col-header span {
-    font-family:'Courier Prime',monospace; font-size:8px;
-    letter-spacing:2px; text-transform:uppercase; color:var(--gold);
+    font-family:'Courier Prime',monospace; font-size:9px;
+    letter-spacing:2px; text-transform:uppercase; color:var(--green-deep);
   }
   @media (max-width:768px) {
     .audit-header, .audit-col-header {
@@ -1208,12 +1285,12 @@
     display: flex; gap: 20px; align-items: flex-start;
     margin-bottom: 28px;
     padding-bottom: 28px;
-    border-bottom: 1px solid rgba(201,168,76,0.12);
+    border-bottom: 1px solid var(--border-light);
   }
   .instruction-step:last-of-type { border-bottom: none; }
   .step-number {
     flex-shrink: 0; width: 40px; height: 40px;
-    background: var(--gold); color: var(--green-deep);
+    background: var(--green-deep); color: #fff;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
     font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900;
     margin-top: 2px;
@@ -1222,7 +1299,7 @@
   .step-title {
     font-family: 'Playfair Display', serif;
     font-size: 20px; font-weight: 700;
-    color: var(--gold-light); margin-bottom: 10px;
+    color: var(--green-deep); margin-bottom: 10px;
   }
   .step-text {
     font-family: 'EB Garamond', serif;
@@ -1233,27 +1310,27 @@
     font-size: 14px; color: var(--cream-dark); opacity: 0.8; font-style: italic;
   }
   .step-callout {
-    background: rgba(0,0,0,0.25); border: 1px solid rgba(201,168,76,0.2);
-    border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0;
+    background: #f5f5f0; border: 1px solid var(--border-light);
+    border-left: 3px solid var(--green-deep); border-radius: 0 4px 4px 0;
     padding: 12px 16px; margin: 10px 0; font-size: 14px;
   }
-  .step-callout-green { border-left-color: #00e060; background: rgba(0,180,70,0.08); }
+  .step-callout-green { border-left-color: #2e7d32; background: #e8f5e9; }
   .callout-row { display: flex; gap: 12px; align-items: baseline; margin-bottom: 6px; flex-wrap: wrap; }
   .callout-row:last-child { margin-bottom: 0; }
   .callout-label {
     font-family: 'Courier Prime', monospace; font-size: 9px;
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); min-width: 70px; flex-shrink: 0;
+    color: var(--green-deep); min-width: 70px; flex-shrink: 0;
   }
   .callout-val { font-family: 'EB Garamond', serif; font-size: 15px; color: var(--cream); }
   .callout-val code {
     font-family: 'Courier Prime', monospace; font-size: 13px;
-    background: rgba(0,0,0,0.3); padding: 1px 6px; border-radius: 3px;
-    color: var(--gold-light);
+    background: #f5f5f0; padding: 1px 6px; border-radius: 3px;
+    color: var(--green-deep);
   }
   .instruction-reference {
-    background: rgba(13,40,24,0.5); border: 1px solid rgba(201,168,76,0.15);
-    border-left: 3px solid var(--red-light);
+    background: #f5f5f0; border: 1px solid var(--border-light);
+    border-left: 3px solid var(--red);
     border-radius: 0 4px 4px 0;
     padding: 18px 20px; margin-bottom: 20px;
   }
@@ -1264,11 +1341,11 @@
   .ref-table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .ref-table th {
     font-family: 'Courier Prime', monospace; font-size: 9px;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
-    border-bottom: 1px solid rgba(201,168,76,0.25); padding: 6px 10px; text-align: left;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--green-deep);
+    border-bottom: 1px solid var(--border-light); padding: 6px 10px; text-align: left;
   }
-  .ref-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--cream); }
-  .ref-table code { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--gold-light); }
+  .ref-table td { padding: 8px 10px; border-bottom: 1px solid var(--border-light); color: var(--text-dark); }
+  .ref-table code { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--green-deep); }
   .ref-list {
     padding-left: 20px; font-family: 'EB Garamond', serif;
     font-size: 15px; line-height: 1.8; color: var(--cream);
@@ -1283,23 +1360,27 @@
   /* ── ADMIN LOGIN GATE ── */
   #admin-login-gate {
     display: flex; align-items: center; justify-content: center;
-    min-height: 60vh; padding: 24px;
+    min-height: 70vh; padding: 28px;
   }
   .admin-login-card {
-    background: rgba(13,40,24,0.85);
-    border: 1px solid rgba(201,168,76,0.35);
-    border-radius: 8px;
-    padding: 40px 36px;
-    width: 100%; max-width: 380px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.1);
+    background: var(--bg-card);
+    border: 2px solid var(--green-deep);
+    border-radius: 12px;
+    padding: 48px 40px;
+    width: 100%; max-width: 400px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
     text-align: center;
+    transition: all 0.3s ease;
   }
-  .admin-login-icon { font-size: 36px; margin-bottom: 12px; color: var(--gold); line-height: 1; }
-  .admin-login-title { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--white); margin-bottom:4px; }
-  .admin-login-sub { font-family:'Courier Prime',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--cream-dark); opacity:0.55; margin-bottom:28px; }
-  .admin-login-input { text-align:left; font-size:16px !important; }
-  @media (max-width: 480px) { .admin-login-card { padding: 28px 20px; } }
+  .admin-login-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  .admin-login-icon { font-size: 40px; margin-bottom: 16px; color: var(--green-deep); line-height: 1; }
+  .admin-login-title { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--text-dark); margin-bottom:6px; }
+  .admin-login-sub { font-family:'Courier Prime',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--cream-dark); margin-bottom:32px; }
+  .admin-login-input { text-align:left; font-size:17px !important; }
+  @media (max-width: 480px) { .admin-login-card { padding: 32px 24px; } }
 
   @keyframes loginShake {
     0%,100% { transform: translateX(0); }
@@ -1315,8 +1396,8 @@
     white-space: nowrap;
     transition: color 0.15s;
   }
-  .sortable-th:hover { color: var(--gold-light); }
-  .sortable-th.sort-active { color: var(--gold); }
+  .sortable-th:hover { color: var(--green-deep); }
+  .sortable-th.sort-active { color: var(--green-deep); }
   .sort-arrow {
     display: inline-block;
     font-size: 10px;
@@ -1330,35 +1411,34 @@
   /* ── PLAYER NAME LINK ── */
   .player-link {
     cursor: pointer;
-    border-bottom: 1px dashed rgba(201,168,76,0.4);
+    border-bottom: 1px dashed var(--green-deep);
     transition: color 0.15s, border-color 0.15s;
     display: inline;
   }
-  .player-link:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+  .player-link:hover { color: var(--green-deep); border-bottom-color: var(--green-deep); }
 
   /* ── MODAL OVERLAY ── */
   .modal-overlay {
     position: fixed; inset: 0; z-index: 2000;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(6px);
+    background: rgba(0,0,0,0.6);
     display: flex; align-items: center; justify-content: center;
-    padding: 20px;
+    padding: 24px;
     opacity: 0; pointer-events: none;
-    transition: opacity 0.25s;
+    transition: opacity 0.3s ease;
   }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
 
   /* ── BASEBALL CARD ── */
   .baseball-card {
-    width: 340px;
+    width: 360px;
     background: #f5e9c8;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 4px solid var(--gold);
-    box-shadow: 0 0 0 8px var(--green-deep), 0 0 0 10px var(--gold), 0 30px 80px rgba(0,0,0,0.7);
+    box-shadow: 0 0 0 8px var(--green-deep), 0 0 0 12px var(--gold), 0 40px 100px rgba(0,0,0,0.8);
     overflow: hidden;
     position: relative;
     transform: scale(0.85) rotateY(8deg);
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
     color: var(--text-dark);
     font-family: 'EB Garamond', serif;
   }
@@ -1369,32 +1449,32 @@
   /* Card top band */
   .card-top-band {
     background: var(--green-deep);
-    padding: 8px 14px 6px;
+    padding: 10px 16px 8px;
     display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 4px solid var(--gold);
   }
   .card-league-name {
     font-family: 'Courier Prime', monospace;
-    font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
     color: var(--gold);
   }
   .card-year {
     font-family: 'Playfair Display', serif;
-    font-size: 16px; font-weight: 900; color: var(--gold);
+    font-size: 18px; font-weight: 900; color: var(--gold);
   }
 
   /* Photo area */
   .card-photo-area {
     position: relative;
     height: 220px;
-    background: linear-gradient(160deg, #1a4228 0%, #0d2818 100%);
+    background: #e8efe8;
     overflow: hidden;
     cursor: pointer;
   }
   .card-photo-area::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, transparent 60%, rgba(13,40,24,0.8) 100%);
+    background: linear-gradient(to bottom, transparent 70%, rgba(255,255,255,0.6) 100%);
     pointer-events: none;
   }
   .card-photo {
@@ -1412,13 +1492,13 @@
   .card-photo-hint {
     font-family: 'Courier Prime', monospace;
     font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(201,168,76,0.5);
+    color: var(--green-deep); opacity: 0.5;
   }
   .card-photo-upload { display: none; }
   .card-upload-badge {
     position: absolute; bottom: 10px; right: 10px; z-index: 6;
-    background: rgba(13,40,24,0.85); border: 1px solid var(--gold);
-    color: var(--gold); font-family: 'Courier Prime', monospace;
+    background: var(--green-deep); border: 1px solid var(--green-deep);
+    color: #fff; font-family: 'Courier Prime', monospace;
     font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
     padding: 4px 8px; border-radius: 3px; pointer-events: none;
   }
@@ -1442,60 +1522,60 @@
   }
 
   /* Card body */
-  .card-body { padding: 14px 16px 0; }
+  .card-body { padding: 16px 18px 0; }
   .card-name {
     font-family: 'Playfair Display', serif;
-    font-size: 26px; font-weight: 900;
+    font-size: 28px; font-weight: 900;
     color: var(--text-dark); line-height: 1.1;
     text-transform: uppercase; letter-spacing: 1px;
   }
   .card-team {
     font-family: 'EB Garamond', serif; font-style: italic;
-    font-size: 15px; color: var(--green-mid); margin-top: 2px;
+    font-size: 16px; color: var(--green-mid); margin-top: 4px;
   }
 
   /* Stats strip */
   .card-stats {
     display: flex; gap: 0;
-    margin: 12px 0 0;
-    border: 1px solid rgba(13,40,24,0.2);
-    border-radius: 4px; overflow: hidden;
+    margin: 14px 0 0;
+    border: 1px solid rgba(13,40,24,0.25);
+    border-radius: 6px; overflow: hidden;
   }
   .card-stat {
-    flex: 1; text-align: center; padding: 8px 4px;
-    border-right: 1px solid rgba(13,40,24,0.15);
+    flex: 1; text-align: center; padding: 10px 6px;
+    border-right: 1px solid rgba(13,40,24,0.2);
   }
   .card-stat:last-child { border-right: none; }
   .card-stat-val {
     font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 700; color: var(--green-deep);
+    font-size: 24px; font-weight: 700; color: var(--green-deep);
     line-height: 1;
   }
   .card-stat-lbl {
     font-family: 'Courier Prime', monospace;
-    font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--green-muted); margin-top: 3px;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--green-muted); margin-top: 4px;
   }
 
   /* Contact strip */
   .card-contact {
-    padding: 10px 16px 14px;
-    border-top: 1px solid rgba(13,40,24,0.15);
-    margin-top: 12px;
+    padding: 12px 18px 16px;
+    border-top: 1px solid rgba(13,40,24,0.2);
+    margin-top: 14px;
   }
   .card-contact-row {
-    display: flex; align-items: center; gap: 8px;
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(13,40,24,0.08);
-    font-size: 13px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(13,40,24,0.1);
+    font-size: 14px;
   }
   .card-contact-row:last-child { border-bottom: none; }
-  .card-contact-icon { font-size: 14px; width: 20px; text-align: center; flex-shrink: 0; }
+  .card-contact-icon { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
   .card-contact-link {
     color: var(--green-mid); text-decoration: none;
-    font-family: 'Courier Prime', monospace; font-size: 12px;
+    font-family: 'Courier Prime', monospace; font-size: 13px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    transition: color 0.15s;
+    transition: color 0.2s ease;
   }
   .card-contact-link:hover { color: var(--green-deep); text-decoration: underline; }
 
@@ -1543,7 +1623,7 @@
     display: flex; align-items: center; justify-content: space-between;
     border-top: 3px solid var(--gold);
   }
-  .card-mvgc { font-family: 'Playfair Display', serif; font-size: 11px; color: var(--gold); font-style: italic; }
+  .card-mvgc { font-family: 'Playfair Display', serif; font-size: 11px; color: var(--green-deep); font-style: italic; }
   .card-close-btn {
     background: none; border: 1px solid rgba(201,168,76,0.4);
     color: var(--gold); font-family: 'Courier Prime', monospace;
@@ -1571,53 +1651,54 @@
     z-index: 25;
   }
   .header-corner-btn {
-    background: rgba(13,40,24,0.7);
-    border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold);
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
     font-family: 'Courier Prime', monospace;
-    font-size: 10px; font-weight: 700;
+    font-size: 11px; font-weight: 700;
     letter-spacing: 1.5px; text-transform: uppercase;
-    padding: 7px 14px;
-    border-radius: 3px;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: all 0.18s;
+    transition: all 0.3s ease;
     white-space: nowrap;
-    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
   .header-corner-btn:hover {
-    background: rgba(201,168,76,0.15);
+    background: var(--gold);
     border-color: var(--gold);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: var(--green-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(201,168,76,0.4);
   }
   .header-corner-right { position: absolute; top: 10px; right: 12px; z-index: 25; }
 
   /* Season stats pill */
   .header-season-stats {
     display: flex; align-items: center; gap: 0;
-    background: rgba(13,40,24,0.7);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 3px;
-    backdrop-filter: blur(4px);
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
   .season-stat-item {
     display: flex; flex-direction: column; align-items: center;
-    padding: 5px 14px;
+    padding: 6px 16px;
   }
   .season-stat-val {
     font-family: 'Playfair Display', serif;
-    font-size: 18px; font-weight: 700; line-height: 1;
+    font-size: 20px; font-weight: 700; line-height: 1;
     color: var(--gold);
   }
   .season-stat-lbl {
     font-family: 'Courier Prime', monospace;
-    font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--cream-dark); opacity: 0.65; margin-top: 2px;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); margin-top: 3px;
   }
   .season-stat-divider {
-    width: 1px; height: 32px;
-    background: rgba(201,168,76,0.25); flex-shrink: 0;
+    width: 1px; height: 36px;
+    background: rgba(255,255,255,0.2); flex-shrink: 0;
   }
 
   @media (max-width: 768px) {
@@ -1648,47 +1729,50 @@
     z-index: 20;
   }
   .book-tee-time {
-    display: inline-flex; align-items: center; gap: 7px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: var(--gold);
     color: var(--green-deep) !important;
     font-family: 'Courier Prime', monospace;
-    font-size: 10px; font-weight: 700;
+    font-size: 11px; font-weight: 700;
     letter-spacing: 1.5px; text-transform: uppercase;
     text-decoration: none;
-    padding: 9px 16px;
-    border-radius: 3px;
-    box-shadow: 0 2px 14px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.6);
-    transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+    padding: 10px 18px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
     white-space: nowrap;
     line-height: 1;
   }
   .book-tee-time:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(201,168,76,0.45), 0 0 0 1px var(--gold);
+    background: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
-  .book-tee-time:active { transform: translateY(0); }
-  .book-tee-time-icon { font-size: 13px; flex-shrink: 0; }
+  .book-tee-time:active { transform: translateY(-1px); }
+  .book-tee-time-icon { font-size: 14px; flex-shrink: 0; }
   .book-label-short { display: none; }
 
   .header-contact {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     align-items: center;
   }
   .header-contact-row {
-    display: flex; align-items: center; gap: 6px;
+    display: flex; align-items: center; gap: 8px;
     font-family: 'Courier Prime', monospace;
-    font-size: 10px; letter-spacing: 0.5px;
-    color: var(--gold-light);
+    font-size: 11px; letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
-    opacity: 0.85;
-    transition: opacity 0.15s;
+    opacity: 0.9;
+    transition: all 0.3s ease;
     white-space: nowrap;
   }
-  .header-contact-row:hover { opacity: 1; color: var(--gold); }
-  .header-contact-icon { font-size: 11px; }
+  .header-contact-row:hover { 
+    opacity: 1; color: var(--gold);
+    transform: translateY(-1px);
+  }
+  .header-contact-icon { font-size: 12px; }
 
   @media (max-width: 768px) {
     .header-right-block { left: 80%; gap: 6px; }
@@ -1729,7 +1813,7 @@
     <button class="header-corner-btn" onclick="showPage('admin', document.querySelector('.nav-more-item[onclick*=admin]'))">
       ⚙ Admin
     </button>
-    <button class="header-corner-btn" id="header-captain-btn" onclick="handleHeaderCaptainBtn()" style="background:rgba(201,168,76,0.08);">
+    <button class="header-corner-btn" id="header-captain-btn" onclick="handleHeaderCaptainBtn()" style="background:rgba(0,0,0,0.2);">
       🏌 Captain
     </button>
   </div>
@@ -1752,9 +1836,9 @@
       </a>
     </div>
   </div>
-  <img class="header-wordmark" src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAEiBAADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAEIAgcFBgkEA//EAF4QAAEDAwEEBAkGCAsEBwYHAQEAAgMEBREGBxIhMQgTFJIXIkFRU1RWlNMyN2FxdYEVI0JSkbKzwRYnYnJ0gqGjsbTSMzZGcxgkJSZDosM1Y4WTwtEoNEVVZGXw4f/EABoBAQEAAwEBAAAAAAAAAAAAAAABAgMFBAb/xAAyEQACAQIFAgQGAgIDAQEAAAAAAQIDEQQTFTFREiEFM0FiIjJSYXGBFCNCoSQ0sZHB/9oADAMBAAIRAxEAPwC3aIixAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAQoiAIiIAiIgCIiAFERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREwgCJhEAREQBERAEREATKIgBREQBERAERCgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIip1ta2rbRrPtP1HarXq6rpaGlr3xwQsghIjYPIMsJ/SsZS6Vex58RiY0IqUkXFRUS8NG1b24rvd6f4ajw0bV/bav93p/hrDNR49VpcMvcioj4aNq/ttX+70/wANT4Z9q3txXe70/wANMxDVaXDL2oqJeGjat7cV3u9P8NPDRtW9uK73en+GmauBqtLhl7UVEfDRtX9tq/3en+Gp8NG1b24rvd6f4aZqGq0uGXtRUS8NG1b24rvd6f4aeGfat7b13u9P8NM1DVaXDL2oqJeGfat7bV3u9P8ADTwz7Vvbau93p/hpmIarS4Ze1FRLwz7Vvbau93p/hqPDRtX9tq/3en+GmYhqtLhl7kVEvDPtW9t673en+Go8NG1f22r/AHen+GmahqtLhl7kVEfDRtW9tq73en+Gnho2re21f7vT/DTNXA1Wlwy9yKiPho2re21f7vT/AA08NG1b22r/AHen+GmauBqtLhl7kVEvDPtW9tq73en+Go8NG1b22r/d6f4aZq4Gq0uGXuRUS8M+1b24rvd6f4ajw0bV/bav93p/hpmrgarS4Ze5FRLwz7Vvbau93p/hqPDRtX9tq/3en+GmauBqtLhl7kVEfDRtX9tq/wB3p/hp4aNq/ttX+70/w0zVwNVpcMvciol4aNq3txXe70/w08M+1b22rvd6f4aZqGq0uGXtRUSO2fat7cV3u8Hw1j4adq3ttXe70/w0zENVpcMveiol4aNq3txXe70/w08NG1b24rvd6f4aZq4Gq0uGXtRUS8NG1b24rvd6f4aeGjat7cV3u9P8NM1DVaXDL2oqJeGjat7cV3u9P8NPDRtW9uK73en+GmahqtLhl7UVEvDPtW9t673en+Gnho2re29d7vT/AA0zVwNVpcMvaiol4aNq3txXe70/w08NG1b24rvd6f4aZqGq0uGXtRUS8NG1b24rvd6f4aeGjat7cV3u9P8ADTNQ1Wlwy9qKiXho2qe3Fd7vT/DT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" alt="Mill Valley Golf Club" />
-  <p class="site-subtitle">Winter League 2026</p>
-  <p style="font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(201,168,76,0.5);margin-top:4px;">
+  <img class="header-wordmark" src="logo.svg" alt="Mill Valley National — Winter League" />
+  <p class="site-subtitle" style="display:none;">Winter League 2026</p>
+  <p style="position:absolute;bottom:8px;right:16px;font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1.5px;color:rgba(255,199,44,0.35);margin:0;">
     <span id="visit-count">·</span> visits
   </p>
 </header>
@@ -1780,7 +1864,7 @@
 </nav>
 
 <!-- Mobile More Menu overlay -->
-<div id="more-menu" style="display:none;position:fixed;bottom:60px;left:0;right:0;z-index:999;background:var(--green-deep);border-top:1px solid rgba(201,168,76,0.3);box-shadow:0 -4px 24px rgba(0,0,0,0.6);">
+<div id="more-menu" style="display:none;position:fixed;bottom:60px;left:0;right:0;z-index:999;background:#f5f5f0;border-top:1px solid var(--border-light);box-shadow:0 -2px 8px rgba(0,0,0,0.1);">
   <div style="display:grid;grid-template-columns:repeat(3,1fr);padding:8px 0;">
     <button class="more-menu-btn" onclick="showPage('instructions',this);closeMoreMenu()"><span style="font-size:20px;">📖</span><span>How To Use</span></button>
     <button class="more-menu-btn" onclick="showPage('announcements',this);closeMoreMenu()"><span style="font-size:20px;">📢</span><span>News</span></button>
@@ -1847,15 +1931,15 @@
 
     <!-- Playoff stats -->
     <div class="league-stats-row" id="playoff-stats-row" style="margin-top:12px;">
-      <div class="league-stat-box" style="border-color:rgba(201,168,76,0.4);">
+      <div class="league-stat-box" style="border-color:#e0ddd5;">
         <div class="league-stat-val" id="pstat-sf1" style="font-size:clamp(20px,3vw,32px);">0/10</div>
         <div class="league-stat-lbl">SF1 Results</div>
       </div>
-      <div class="league-stat-box" style="border-color:rgba(201,168,76,0.4);">
+      <div class="league-stat-box" style="border-color:#e0ddd5;">
         <div class="league-stat-val" id="pstat-sf2" style="font-size:clamp(20px,3vw,32px);">0/10</div>
         <div class="league-stat-lbl">SF2 Results</div>
       </div>
-      <div class="league-stat-box" style="border-color:rgba(201,168,76,0.4);">
+      <div class="league-stat-box" style="border-color:#e0ddd5;">
         <div class="league-stat-val" id="pstat-final" style="font-size:clamp(20px,3vw,32px);">0/10</div>
         <div class="league-stat-lbl">Final Results</div>
       </div>
@@ -1956,7 +2040,7 @@
 
       <!-- Scoring reminder -->
       <div class="instruction-reference" style="border-left-color:var(--gold);">
-        <h3 class="ref-title" style="color:var(--gold);">🏆 Scoring Reminder</h3>
+        <h3 class="ref-title" style="color:var(--green-deep);">🏆 Scoring Reminder</h3>
         <ul class="ref-list">
           <li><strong>Win</strong> = 1 point for the winning player's team</li>
           <li><strong>Halved / Even</strong> = 0.5 points each</li>
@@ -1971,8 +2055,8 @@
         <h3 class="ref-title" style="color:var(--cream);">Need Help?</h3>
         <p style="font-size:15px;color:var(--cream-dark);line-height:1.6;">
           Contact the Commissioner at
-          <a href="tel:+14158882690" style="color:var(--gold);">415-888-2690</a> or
-          <a href="/cdn-cgi/l/email-protection#7b12151d143b160d1c14171d18140e09081e5514091c" style="color:var(--gold);"><span class="__cf_email__" data-cfemail="741d1a121b341902131b1812171b010607115a1b0613">[email&#160;protected]</span></a>
+          <a href="tel:+14158882690" style="color:var(--green-deep);">415-888-2690</a> or
+          <a href="/cdn-cgi/l/email-protection#7b12151d143b160d1c14171d18140e09081e5514091c" style="color:var(--green-deep);"><span class="__cf_email__" data-cfemail="741d1a121b341902131b1812171b010607115a1b0613">[email&#160;protected]</span></a>
         </p>
       </div>
 
@@ -1982,7 +2066,7 @@
   <!-- ANNOUNCEMENTS -->
   <div id="page-announcements" class="page">
     <h2 class="section-title">📢 Announcements
-      <button onclick="loadAnnouncements().then(()=>showToast('Refreshed ✓'))" style="float:right;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:5px 12px;border-radius:3px;cursor:pointer;font-weight:400;">↻ Refresh</button>
+      <button onclick="loadAnnouncements().then(()=>showToast('Refreshed ✓'))" style="float:right;background:#f5f5f0;border:1px solid #e0ddd5;color:var(--green-deep);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:5px 12px;border-radius:3px;cursor:pointer;font-weight:400;">↻ Refresh</button>
     </h2>
     <p class="section-subtitle">League news and updates — newest first</p>
     <div id="announcements-list"></div>
@@ -2045,13 +2129,13 @@
           <label class="form-label">Password</label>
           <input class="form-input admin-login-input" id="captain-password" type="password" placeholder="Password"
             autocomplete="current-password" onkeydown="if(event.key==='Enter')attemptCaptainLogin()" />
-          <button onclick="toggleCaptainPasswordVisibility()" style="position:absolute;right:10px;bottom:10px;background:none;border:none;cursor:pointer;color:var(--gold);opacity:0.6;font-size:14px;" title="Show/hide">👁</button>
+          <button onclick="toggleCaptainPasswordVisibility()" style="position:absolute;right:10px;bottom:10px;background:none;border:none;cursor:pointer;color:var(--green-deep);opacity:0.6;font-size:14px;" title="Show/hide">👁</button>
         </div>
         <div id="captain-login-error" style="display:none;font-family:'Courier Prime',monospace;font-size:11px;color:var(--red-light);margin-bottom:10px;letter-spacing:1px;">✕ Incorrect username or password</div>
         <button class="btn btn-gold" onclick="attemptCaptainLogin()" style="width:100%;min-height:44px;font-size:12px;letter-spacing:2px;margin-bottom:12px;">
           Sign In
         </button>
-        <button onclick="showResetPasswordModal()" style="background:none;border:none;cursor:pointer;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;color:var(--gold);opacity:0.6;text-decoration:underline;">
+        <button onclick="showResetPasswordModal()" style="background:none;border:none;cursor:pointer;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;color:var(--green-deep);opacity:0.6;text-decoration:underline;">
           Forgot password?
         </button>
       </div>
@@ -2062,8 +2146,8 @@
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;flex-wrap:wrap;gap:12px;">
         <div>
           <h2 class="section-title" style="margin-bottom:0;border-bottom:none;padding-bottom:0;">Enter Match Results</h2>
-          <p style="font-family:'Courier Prime',monospace;font-size:11px;color:var(--gold);margin-top:4px;letter-spacing:1px;">
-            Signed in as: <span id="captain-logged-in-name" style="color:var(--gold-light);"></span>
+          <p style="font-family:'Courier Prime',monospace;font-size:11px;color:var(--green-deep);margin-top:4px;letter-spacing:1px;">
+            Signed in as: <span id="captain-logged-in-name" style="color:var(--green-deep);font-weight:700;"></span>
           </p>
         </div>
         <button onclick="captainLogout()" class="btn btn-outline" style="font-size:10px;padding:7px 16px;letter-spacing:1.5px;">
@@ -2138,8 +2222,8 @@
   <div id="page-playoffs" class="page active">
     <div id="playoff-announcement-banner"></div>
     <div id="playoff-signin-banner"></div>
-    <div id="sheets-sync-status" style="display:none;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;color:var(--gold);opacity:0.7;text-align:center;padding:4px 0 8px;"></div>
-    <button onclick="refreshFromSheets()" style="display:block;margin:0 auto 12px;background:none;border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1.5px;padding:5px 14px;border-radius:3px;cursor:pointer;opacity:0.75;" title="Re-fetch tee times and results from Google Sheets">⟳ SYNC FROM SHEET</button>
+    <div id="sheets-sync-status" style="display:none;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;color:var(--green-deep);opacity:0.7;text-align:center;padding:4px 0 8px;"></div>
+    <button onclick="refreshFromSheets()" style="display:block;margin:0 auto 12px;background:none;border:1px solid #e0ddd5;color:var(--green-deep);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1.5px;padding:5px 14px;border-radius:3px;cursor:pointer;" title="Re-fetch tee times and results from Google Sheets">⟳ SYNC FROM SHEET</button>
     <!-- Admin quick-post bar -->
     <div id="admin-quick-post" style="display:none;">
       <div class="admin-quick-bar">
@@ -2218,13 +2302,13 @@
   <!-- MEDIA WALL -->
   <div id="page-media" class="page">
     <h2 class="section-title">📸 Media Wall
-      <button onclick="loadMediaPosts().then(()=>renderMediaFeed()).then(()=>showToast('Refreshed ✓'))" style="float:right;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:5px 12px;border-radius:3px;cursor:pointer;font-weight:400;">↻ Refresh</button>
+      <button onclick="loadMediaPosts().then(()=>renderMediaFeed()).then(()=>showToast('Refreshed ✓'))" style="float:right;background:#f5f5f0;border:1px solid #e0ddd5;color:var(--green-deep);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:5px 12px;border-radius:3px;cursor:pointer;font-weight:400;">↻ Refresh</button>
     </h2>
     <p class="section-subtitle">Memes, highlights, trash talk — keep it golf course appropriate</p>
 
     <!-- Post form -->
     <div class="media-post-form card" style="margin-bottom:28px;">
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);font-size:17px;margin-bottom:16px;">Share Something</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);font-size:17px;margin-bottom:16px;">Share Something</h3>
       <div class="form-group" style="margin-bottom:12px;">
         <label class="form-label">Your Name</label>
         <input class="form-input" id="media-poster-name" placeholder="e.g. Luke Dornhofer" style="max-width:280px;" />
@@ -2237,7 +2321,7 @@
       </div>
 
       <!-- Media type tabs -->
-      <div style="display:flex;gap:0;margin-bottom:14px;border:1px solid rgba(201,168,76,0.25);border-radius:4px;overflow:hidden;max-width:480px;">
+      <div style="display:flex;gap:0;margin-bottom:14px;border:1px solid #e0ddd5;border-radius:4px;overflow:hidden;max-width:480px;">
         <button class="media-type-tab active" id="mtab-upload" onclick="switchMediaTab('upload')">📷 Upload Photo/Video</button>
         <button class="media-type-tab" id="mtab-link" onclick="switchMediaTab('link')">🔗 Paste Link</button>
         <button class="media-type-tab" id="mtab-text" onclick="switchMediaTab('text')">💬 Text Only</button>
@@ -2343,7 +2427,7 @@
           <label class="form-label">Password</label>
           <input class="form-input admin-login-input" id="admin-password" type="password" placeholder="Password"
             autocomplete="current-password" onkeydown="if(event.key==='Enter')attemptAdminLogin()" />
-          <button onclick="toggleAdminPasswordVisibility()" style="position:absolute;right:10px;bottom:10px;background:none;border:none;cursor:pointer;color:var(--gold);opacity:0.6;font-size:14px;" title="Show/hide password">👁</button>
+          <button onclick="toggleAdminPasswordVisibility()" style="position:absolute;right:10px;bottom:10px;background:none;border:none;cursor:pointer;color:var(--green-deep);opacity:0.6;font-size:14px;" title="Show/hide password">👁</button>
         </div>
         <div id="admin-login-error" style="display:none;font-family:'Courier Prime',monospace;font-size:11px;color:var(--red-light);margin-bottom:14px;letter-spacing:1px;">✕ Incorrect username or password</div>
         <button class="btn btn-gold" onclick="attemptAdminLogin()" style="width:100%;min-height:44px;font-size:12px;letter-spacing:2px;">
@@ -2373,7 +2457,7 @@
 
     <!-- SETTINGS PANEL -->
     <div id="setup-settings" class="setup-panel" style="display:none">
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:20px;font-size:20px;">Site Settings</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:20px;font-size:20px;">Site Settings</h3>
 
       <div class="form-group">
         <label class="form-label" style="font-size:12px;margin-bottom:12px;">Landing Page</label>
@@ -2400,17 +2484,17 @@
             </span>
           </label>
         </div>
-        <p id="landing-saved-msg" style="font-family:'Courier Prime',monospace;font-size:11px;color:#00e060;margin-top:14px;display:none;">✓ Saved — takes effect on next page load</p>
+        <p id="landing-saved-msg" style="font-family:'Courier Prime',monospace;font-size:11px;color:#2e7d32;margin-top:14px;display:none;">✓ Saved — takes effect on next page load</p>
       </div>
     </div>
 
     <!-- ANNOUNCEMENTS ADMIN PANEL -->
     <div id="setup-announcements" class="setup-panel" style="display:none">
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:16px;font-size:20px;">Post Announcement</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:16px;font-size:20px;">Post Announcement</h3>
 
       <!-- Today's Matches quick-post -->
-      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:16px 18px;margin-bottom:24px;max-width:700px;">
-        <div style="font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">📅 Quick Post — Today's Matches</div>
+      <div style="background:#f5f5f0;border:1px solid #e0ddd5;border-radius:8px;padding:16px 18px;margin-bottom:24px;max-width:700px;">
+        <div style="font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green-deep);margin-bottom:10px;">📅 Quick Post — Today's Matches</div>
         <div style="font-family:'EB Garamond',serif;font-size:14px;color:var(--cream-dark);margin-bottom:14px;opacity:0.8;">Auto-generates and posts an announcement listing all playoff matches scheduled for today.</div>
         <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
           <button class="btn btn-gold" onclick="postTodaysMatches()" style="font-size:11px;">☀️ Post Today's Matches</button>
@@ -2441,7 +2525,7 @@
         Select the 4 playoff teams and set their semifinal pairings. The #1 seed picks their opponent; the remaining two teams play each other.
       </div>
 
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:16px;font-size:18px;">Semifinal 1 — #1 Seed's Choice</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:16px;font-size:18px;">Semifinal 1 — #1 Seed's Choice</h3>
       <div class="result-grid" style="max-width:600px;margin-bottom:24px;">
         <div class="form-group">
           <label class="form-label">Team A (Higher Seed)</label>
@@ -2457,7 +2541,7 @@
         </div>
       </div>
 
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:16px;font-size:18px;">Semifinal 2 — Remaining Teams</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:16px;font-size:18px;">Semifinal 2 — Remaining Teams</h3>
       <div class="result-grid" style="max-width:600px;margin-bottom:24px;">
         <div class="form-group">
           <label class="form-label">Team C</label>
@@ -2495,7 +2579,7 @@
 
     <div id="setup-specials" class="setup-panel" style="display:none">
 
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:8px;font-size:20px;">Record Hole-in-One ⛳</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:8px;font-size:20px;">Record Hole-in-One ⛳</h3>
       <div class="result-grid" style="max-width:640px;margin-bottom:8px;">
         <div class="form-group">
           <label class="form-label">Player Name</label>
@@ -2549,7 +2633,7 @@
 
     <!-- CAPTAINS & PASSWORDS PANEL -->
     <div id="setup-captains" class="setup-panel" style="display:none">
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:6px;font-size:20px;">🔑 Captains &amp; Passwords</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:6px;font-size:20px;">🔑 Captains &amp; Passwords</h3>
       <p style="font-size:14px;color:var(--cream-dark);opacity:0.75;margin-bottom:24px;font-style:italic;">Manage captain assignments and reset login passwords.</p>
 
       <!-- Captain roster table -->
@@ -2570,7 +2654,7 @@
       </div>
 
       <!-- Add / change captain -->
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:14px;font-size:17px;">Assign / Change Captain</h3>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:14px;font-size:17px;">Assign / Change Captain</h3>
       <div class="notice notice-info" style="margin-bottom:16px;max-width:700px;">
         Select a player to make them a captain. This updates their (C) badge everywhere and adds them to the login system with a generated username and default password (last 7 digits of their phone).
       </div>
@@ -2635,8 +2719,8 @@
 
     <!-- Step 2: show password hint -->
     <div id="reset-step-2" style="display:none;">
-      <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:16px 18px;margin-bottom:20px;text-align:left;">
-        <div style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;text-transform:uppercase;">Password Hint</div>
+      <div style="background:#f5f5f0;border:1px solid #e0ddd5;border-radius:4px;padding:16px 18px;margin-bottom:20px;text-align:left;">
+        <div style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--green-deep);margin-bottom:8px;text-transform:uppercase;">Password Hint</div>
         <div style="font-family:'EB Garamond',serif;font-size:16px;color:var(--cream);line-height:1.5;" id="reset-hint-text"></div>
       </div>
       <div class="form-group" style="margin-bottom:16px;">
@@ -2673,10 +2757,13 @@
     <div class="card-photo-area" id="card-photo-area">
       <div class="card-photo-placeholder" id="card-photo-placeholder">
         <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="24" r="14" stroke="#c9a84c" stroke-width="2"/>
-          <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#c9a84c" stroke-width="2"/>
+          <circle cx="32" cy="24" r="14" stroke="#006747" stroke-width="2" opacity="0.4"/>
+          <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#006747" stroke-width="2" opacity="0.4"/>
+          <rect x="20" y="38" width="24" height="18" rx="3" stroke="#006747" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="32" cy="47" r="5" stroke="#006747" stroke-width="1.5" opacity="0.3"/>
         </svg>
-        <span class="card-photo-hint">Tap to add photo</span>
+        <span class="card-photo-hint">Tap to add your photo</span>
+        <span style="font-family:'Courier Prime',monospace;font-size:8px;color:var(--green-muted);letter-spacing:1px;opacity:0.6;">CAMERA ROLL OR SELFIE</span>
       </div>
       <img class="card-photo" id="card-photo" src="" alt="" style="display:none"/>
       <input type="file" id="card-photo-upload" accept="image/*,image/heic,image/heif" style="display:none" onchange="handlePhotoUpload(event)"/>
@@ -3896,7 +3983,7 @@ function openPlayerCard(name) {
   // Stats
   const diffVal = stats.diff || 0;
   const diffSign = diffVal > 0 ? '+' : '';
-  const diffColor = diffVal > 0 ? '#7dd9a0' : diffVal < 0 ? '#f08080' : 'var(--green-muted)';
+  const diffColor = diffVal > 0 ? '#2e7d32' : diffVal < 0 ? '#c62828' : 'var(--green-muted)';
   document.getElementById('card-stats').innerHTML = `
     <div class="card-stat"><div class="card-stat-val">${stats.pts}</div><div class="card-stat-lbl">Points</div></div>
     <div class="card-stat"><div class="card-stat-val">${stats.w}</div><div class="card-stat-lbl">Wins</div></div>
@@ -4306,7 +4393,7 @@ function renderTierStandings() {
     card.className = 'card';
     card.innerHTML = `
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);">Tier ${tier}</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--green-deep);">Tier ${tier}</div>
         <div style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1.5px;color:var(--cream-dark);opacity:0.6;">PROMOTION / RELEGATION</div>
       </div>
       <table class="standings-table" style="font-size:14px;">
@@ -4326,12 +4413,12 @@ function renderTierStandings() {
             const rankBadge = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-n';
             const safe = p.name.replace(/'/g,"\\'");
             let crBadge = '';
-            if (playerObj && playerObj.captain) crBadge = ` <span style="font-family:'Courier Prime',monospace;font-size:9px;color:var(--gold);">(C)</span>`;
+            if (playerObj && playerObj.captain) crBadge = ` <span style="font-family:'Courier Prime',monospace;font-size:9px;color:var(--green-deep);">(C)</span>`;
             else if (playerObj && playerObj.rookie) crBadge = ` <span style="font-family:'Courier Prime',monospace;font-size:9px;color:var(--brown-light);">(R)</span>`;
             // Differential badge
             const diffVal = p.diff || 0;
             const diffSign = diffVal > 0 ? '+' : '';
-            const diffColor = diffVal > 0 ? 'color:#7dd9a0;' : diffVal < 0 ? 'color:#f08080;' : 'color:var(--cream-dark);opacity:0.5;';
+            const diffColor = diffVal > 0 ? 'color:#2e7d32;' : diffVal < 0 ? 'color:#c62828;' : 'color:#999;';
             const diffBadge = p.played > 0
               ? `<span style="font-family:'Courier Prime',monospace;font-size:11px;${diffColor}">${diffSign}${diffVal}</span>`
               : `<span style="font-family:'Courier Prime',monospace;font-size:11px;color:var(--cream-dark);opacity:0.3;">—</span>`;
@@ -4404,11 +4491,11 @@ function renderResultEntry() {
     const isLocked = !canEdit;
 
     const lockBanner = isLocked ? `
-      <div style="display:flex;align-items:center;gap:10px;background:rgba(0,0,0,0.2);
-        border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:10px 14px;margin-bottom:10px;">
+      <div style="display:flex;align-items:center;gap:10px;background:#f5f5f0;
+        border:1px solid #e0ddd5;border-radius:3px;padding:10px 14px;margin-bottom:10px;">
         <span style="font-size:16px;">🔒</span>
         <span style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--cream-dark);opacity:0.6;letter-spacing:1px;">
-          You can only enter results for <strong style="color:var(--gold);">${captainTeam}</strong> matches
+          You can only enter results for <strong style="color:var(--green-deep);">${captainTeam}</strong> matches
         </span>
       </div>` : '';
 
@@ -4423,18 +4510,18 @@ function renderResultEntry() {
       if (isLocked) {
         const wl = existing ? (existing.winner==='home' ? hp : existing.winner==='away' ? ap : 'Halved') : '—';
         return `<tr style="opacity:0.45;">
-          <td style="padding:6px 8px;font-family:'Courier Prime',monospace;font-size:12px;color:var(--gold);">T${tier}</td>
-          <td style="padding:6px 8px;font-size:14px;">${hp}</td>
-          <td style="padding:6px 8px;font-size:14px;">${ap}</td>
+          <td style="padding:6px 8px;font-family:'Courier Prime',monospace;font-size:12px;color:var(--green-deep);">T${tier}</td>
+          <td style="padding:6px 8px;font-size:14px;">${playerLink(hp)}</td>
+          <td style="padding:6px 8px;font-size:14px;">${playerLink(ap)}</td>
           <td style="padding:6px 8px;font-family:'Courier Prime',monospace;font-size:12px;color:var(--cream-dark);">${existing ? existing.result : '—'}</td>
           <td style="padding:6px 8px;font-size:13px;color:var(--cream-dark);">${wl}</td>
         </tr>`;
       }
 
       return `<tr>
-        <td style="padding:6px 8px;font-family:'Courier Prime',monospace;font-size:12px;color:var(--gold);">T${tier}</td>
-        <td style="padding:6px 8px;font-size:14px;">${hp}</td>
-        <td style="padding:6px 8px;font-size:14px;">${ap}</td>
+        <td style="padding:6px 8px;font-family:'Courier Prime',monospace;font-size:12px;color:var(--green-deep);">T${tier}</td>
+        <td style="padding:6px 8px;font-size:14px;">${playerLink(hp)}</td>
+        <td style="padding:6px 8px;font-size:14px;">${playerLink(ap)}</td>
         <td style="padding:6px 8px;">
           <input class="result-input" style="width:100px;"
             id="res-${week}-${sh}-${sa}-${tier}"
@@ -4443,7 +4530,7 @@ function renderResultEntry() {
             onchange="saveResult('${week}','${m.home}','${m.away}',${tier},this.value,'home')" />
         </td>
         <td style="padding:6px 8px;">
-          <select style="background:rgba(0,0,0,0.3);border:1px solid rgba(201,168,76,0.3);color:var(--cream);font-family:'Courier Prime',monospace;font-size:11px;padding:5px 6px;border-radius:3px;"
+          <select style="background:#fff;border:1px solid #e0ddd5;color:var(--text-dark);font-family:'Courier Prime',monospace;font-size:11px;padding:5px 6px;border-radius:3px;"
             id="win-${week}-${sh}-${sa}-${tier}"
             onchange="saveResult('${week}','${m.home}','${m.away}',${tier},document.getElementById('res-${week}-${sh}-${sa}-${tier}').value,this.value)">
             <option value="">—</option>
@@ -4456,7 +4543,7 @@ function renderResultEntry() {
     }).join('');
 
     const myMatchBadge = canEdit
-      ? `<span style="font-family:'Courier Prime',monospace;font-size:9px;background:rgba(0,200,80,0.15);color:#00e060;border:1px solid #00c050;padding:2px 8px;border-radius:2px;margin-left:8px;letter-spacing:1px;">YOUR MATCH</span>`
+      ? `<span style="font-family:'Courier Prime',monospace;font-size:9px;background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;padding:2px 8px;border-radius:2px;margin-left:8px;letter-spacing:1px;">YOUR MATCH</span>`
       : '';
 
     const saveBtn = !isLocked ? `
@@ -4472,11 +4559,11 @@ function renderResultEntry() {
       <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;">
         <thead><tr>
-          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);padding:6px 8px;text-align:left;border-bottom:1px solid rgba(201,168,76,0.3);">Tier</th>
-          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);padding:6px 8px;border-bottom:1px solid rgba(201,168,76,0.3);">${m.home}</th>
-          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);padding:6px 8px;border-bottom:1px solid rgba(201,168,76,0.3);">${m.away}</th>
-          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);padding:6px 8px;border-bottom:1px solid rgba(201,168,76,0.3);">Result</th>
-          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);padding:6px 8px;border-bottom:1px solid rgba(201,168,76,0.3);">Winner</th>
+          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--green-deep);padding:6px 8px;text-align:left;border-bottom:1px solid #e0ddd5;">Tier</th>
+          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--green-deep);padding:6px 8px;border-bottom:1px solid #e0ddd5;">${m.home}</th>
+          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--green-deep);padding:6px 8px;border-bottom:1px solid #e0ddd5;">${m.away}</th>
+          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--green-deep);padding:6px 8px;border-bottom:1px solid #e0ddd5;">Result</th>
+          <th style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--green-deep);padding:6px 8px;border-bottom:1px solid #e0ddd5;">Winner</th>
         </tr></thead>
         <tbody>${rows}</tbody>
       </table>
@@ -4614,8 +4701,8 @@ function renderRoster() {
     const safe = p.name.replace(/'/g,"\\'");
     const photo = playerPhotos[p.name];
     const thumb = photo
-      ? `<img src="${photo}" onclick="openPlayerCard('${safe}')" style="width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--gold);margin-right:10px;cursor:pointer;flex-shrink:0;"/>`
-      : `<span onclick="openPlayerCard('${safe}')" style="width:34px;height:34px;border-radius:50%;background:rgba(201,168,76,0.08);border:1.5px dashed rgba(201,168,76,0.3);display:inline-flex;align-items:center;justify-content:center;margin-right:10px;font-size:14px;cursor:pointer;flex-shrink:0;">👤</span>`;
+      ? `<img src="${photo}" onclick="openPlayerCard('${safe}')" style="width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--green-deep);margin-right:10px;cursor:pointer;flex-shrink:0;"/>`
+      : `<span onclick="openPlayerCard('${safe}')" style="width:34px;height:34px;border-radius:50%;background:#f5f5f0;border:1.5px dashed #c0c0b0;display:inline-flex;align-items:center;justify-content:center;margin-right:10px;font-size:14px;cursor:pointer;flex-shrink:0;">👤</span>`;
 
     // C / R badge
     let crBadge = '';
@@ -4626,7 +4713,7 @@ function renderRoster() {
     const tierStatus = getPlayerTierStatus(p.name, p.tier, tierData);
     let statusDot = '';
     if (tierStatus === 'promote') {
-      statusDot = ` <span title="Leading tier — promotion zone" style="font-size:10px;color:#00e060;font-family:'Courier Prime',monospace;font-weight:700;">▲</span>`;
+      statusDot = ` <span title="Leading tier — promotion zone" style="font-size:10px;color:#2e7d32;font-family:'Courier Prime',monospace;font-weight:700;">▲</span>`;
     } else if (tierStatus === 'relegate') {
       statusDot = ` <span title="Last in tier — relegation zone" style="font-size:10px;color:#ff4da6;font-family:'Courier Prime',monospace;font-weight:700;">▼</span>`;
     }
@@ -4640,13 +4727,13 @@ function renderRoster() {
 
     // Diff
     const diffSign = p.diff > 0 ? '+' : '';
-    const diffColor = p.diff > 0 ? '#00e060' : p.diff < 0 ? '#ff4da6' : 'var(--cream-dark)';
+    const diffColor = p.diff > 0 ? '#2e7d32' : p.diff < 0 ? '#c62828' : 'var(--cream-dark)';
     const diffStr = p.played > 0
       ? `<span style="font-family:'Courier Prime',monospace;font-size:12px;color:${diffColor};">${diffSign}${p.diff}</span>`
       : '<span style="opacity:0.3;font-size:12px;">—</span>';
 
     const cellLink = p.cell
-      ? `<a href="tel:+1${p.cell.replace(/\D/g,'')}" style="color:var(--gold-light);font-family:'Courier Prime',monospace;font-size:12px;text-decoration:none;display:block;">${p.cell}</a>
+      ? `<a href="tel:+1${p.cell.replace(/\D/g,'')}" style="color:var(--green-deep);font-family:'Courier Prime',monospace;font-size:12px;text-decoration:none;display:block;">${p.cell}</a>
          <a href="sms:+1${p.cell.replace(/\D/g,'')}" style="color:var(--green-muted);font-family:'Courier Prime',monospace;font-size:10px;text-decoration:none;">💬 Text</a>`
       : '<span style="opacity:0.4;">—</span>';
     const emailLink = p.email
@@ -4971,7 +5058,7 @@ function renderAceWall() {
           <div class="ace-name">${a.player}</div>
           <div class="ace-detail">Hole ${a.hole}${a.club?' · '+a.club:''}${a.date?' · '+a.date:''}${a.note?' · '+a.note:''}</div>
         </div>
-        <label style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1px;color:var(--gold);cursor:pointer;border:1px solid var(--gold);padding:3px 8px;border-radius:2px;opacity:0.7;" title="Add photo or video">
+        <label style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1px;color:var(--green-deep);cursor:pointer;border:1px solid var(--gold);padding:3px 8px;border-radius:2px;opacity:0.7;" title="Add photo or video">
           📷 Media
           <input type="file" accept="image/*,video/*" style="display:none;" onchange="attachEntryMedia(event,'${mediaKey}','ace')"/>
         </label>
@@ -5402,11 +5489,11 @@ function buildPlayoffTierGrid(matchId, teamA, teamB, resultsObj, readonly) {
       html += `
       <div class="pog-card" style="${cardBorder}">
         <div class="pog-tier-badge">Tier ${tier}</div>
-        <div class="pog-matchup">${pA} <span class="pog-vs">vs</span> ${pB}</div>
+        <div class="pog-matchup">${playerLink(pA)} <span class="pog-vs">vs</span> ${playerLink(pB)}</div>
         ${existing && existing.teeTime ? `<div class="pog-tee-time-display">⏰ ${existing.teeTime}</div>` : ''}
         ${hasResult ? `<div class="pog-result-display">
           <span class="pog-score-badge">${resVal||'—'}</span>
-          <span class="pog-winner-badge">${winLabel} wins</span>
+          <span class="pog-winner-badge">${playerLink(winLabel)} wins</span>
         </div>` : '<div class="pog-result-display pog-no-result">Not yet played</div>'}
       </div>`;
     } else {
@@ -5416,7 +5503,7 @@ function buildPlayoffTierGrid(matchId, teamA, teamB, resultsObj, readonly) {
           <div class="pog-tier-badge">Tier ${tier}</div>
           ${hasResult ? `<button class="pog-clear-btn" onclick="clearPlayoffResult('${matchId}',${tier})">✕ CLEAR</button>` : ''}
         </div>
-        <div class="pog-matchup">${pA} <span class="pog-vs">vs</span> ${pB}</div>
+        <div class="pog-matchup">${playerLink(pA)} <span class="pog-vs">vs</span> ${playerLink(pB)}</div>
         <input class="pog-time-input" id="${matchId}-time-${tier}"
           value="${existing && existing.teeTime ? existing.teeTime : ''}"
           placeholder="⏰ Tee time (e.g. Sat 9:04 AM)"
@@ -5573,17 +5660,17 @@ function renderPlayoffLiveScores() {
     if (!teamA || !teamB) return '';
     const leaderA = ptsA > ptsB, leaderB = ptsB > ptsA;
     return `
-      <div style="flex:1;min-width:240px;background:linear-gradient(135deg,rgba(13,42,26,0.8),rgba(8,28,16,0.9));
-        border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:14px 18px;">
-        <div style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);opacity:0.6;margin-bottom:10px;text-transform:uppercase;">${round}</div>
+      <div style="flex:1;min-width:240px;background:var(--bg-card);
+        border:1px solid var(--border-light);border-radius:10px;padding:14px 18px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2px;color:var(--green-deep);opacity:0.6;margin-bottom:10px;text-transform:uppercase;">${round}</div>
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-          <div style="font-family:'Playfair Display',serif;font-size:15px;color:${leaderA?'var(--gold-light)':'var(--cream)'};font-weight:${leaderA?700:400};flex:1;">${teamA}</div>
-          <div style="font-family:'Courier Prime',monospace;font-size:28px;font-weight:700;color:${leaderA?'var(--gold)':'var(--cream-dark)'};min-width:28px;text-align:right;">${ptsA}</div>
+          <div style="font-family:'Playfair Display',serif;font-size:15px;color:${leaderA?'var(--green-deep)':'var(--text-dark)'};font-weight:${leaderA?700:400};flex:1;">${teamA}</div>
+          <div style="font-family:'Courier Prime',monospace;font-size:28px;font-weight:700;color:${leaderA?'var(--green-deep)':'var(--cream-dark)'};min-width:28px;text-align:right;">${ptsA}</div>
           <div style="font-family:'Courier Prime',monospace;font-size:14px;color:var(--cream-dark);opacity:0.4;">–</div>
-          <div style="font-family:'Courier Prime',monospace;font-size:28px;font-weight:700;color:${leaderB?'var(--gold)':'var(--cream-dark)'};min-width:28px;text-align:left;">${ptsB}</div>
-          <div style="font-family:'Playfair Display',serif;font-size:15px;color:${leaderB?'var(--gold-light)':'var(--cream)'};font-weight:${leaderB?700:400};flex:1;text-align:right;">${teamB}</div>
+          <div style="font-family:'Courier Prime',monospace;font-size:28px;font-weight:700;color:${leaderB?'var(--green-deep)':'var(--cream-dark)'};min-width:28px;text-align:left;">${ptsB}</div>
+          <div style="font-family:'Playfair Display',serif;font-size:15px;color:${leaderB?'var(--green-deep)':'var(--text-dark)'};font-weight:${leaderB?700:400};flex:1;text-align:right;">${teamB}</div>
         </div>
-        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--cream-dark);opacity:0.4;margin-top:8px;text-align:center;letter-spacing:1px;">${played}/10 played</div>
+        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--cream-dark);opacity:0.6;margin-top:8px;text-align:center;letter-spacing:1px;">${played}/10 played</div>
       </div>`;
   };
 
@@ -5609,12 +5696,12 @@ async function updatePlayoffSummary(matchId) {
   const isTied = homeP === awayP && played > 0;
 
   let html = `<div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <div style="font-size:16px;">${match.teamA} <strong style="font-family:'Courier Prime',monospace;font-size:20px;color:${homeP>awayP?'var(--gold)':'var(--cream-dark)'};">${homeP}</strong></div>
+    <div style="font-size:16px;">${match.teamA} <strong style="font-family:'Courier Prime',monospace;font-size:20px;color:${homeP>awayP?'var(--green-deep)':'var(--cream-dark)'};">${homeP}</strong></div>
     <div style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--cream-dark);">vs</div>
-    <div style="font-size:16px;"><strong style="font-family:'Courier Prime',monospace;font-size:20px;color:${awayP>homeP?'var(--gold)':'var(--cream-dark)'};">${awayP}</strong> ${match.teamB}</div>`;
+    <div style="font-size:16px;"><strong style="font-family:'Courier Prime',monospace;font-size:20px;color:${awayP>homeP?'var(--green-deep)':'var(--cream-dark)'};">${awayP}</strong> ${match.teamB}</div>`;
 
   if (played === 10 && !isTied) {
-    html += `<div style="margin-left:auto;font-family:'Playfair Display',serif;font-size:16px;color:var(--gold-light);">
+    html += `<div style="margin-left:auto;font-family:'Playfair Display',serif;font-size:16px;color:var(--green-deep);font-weight:700;">
       ✓ ${leader} advance</div>`;
 
     // Auto-set final teams
@@ -5645,11 +5732,11 @@ async function renderFinalMatchup() {
   const team = captainSession?.team;
   const isMyMatch = captainAuthenticated && (team === fA || team === fB);
   const myMatchBadge = isMyMatch
-    ? `<span style="font-family:'Courier Prime',monospace;font-size:9px;background:rgba(0,200,80,0.15);color:#00e060;border:1px solid #00c050;padding:2px 8px;border-radius:2px;margin-left:8px;letter-spacing:1px;">YOUR MATCH</span>`
+    ? `<span style="font-family:'Courier Prime',monospace;font-size:9px;background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;padding:2px 8px;border-radius:2px;margin-left:8px;letter-spacing:1px;">YOUR MATCH</span>`
     : '';
-  document.getElementById('playoff-final-header').innerHTML = `${fA} vs ${fB}${myMatchBadge}${canEdit ? `<button onclick="saveAllPlayoffResults('final')" style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.5);color:var(--gold);padding:5px 14px;border-radius:20px;cursor:pointer;transition:all 0.15s;margin-left:12px;vertical-align:middle;">Save ✓</button>` : ''}`;
+  document.getElementById('playoff-final-header').innerHTML = `${fA} vs ${fB}${myMatchBadge}${canEdit ? `<button onclick="saveAllPlayoffResults('final')" style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:var(--green-deep);border:1px solid var(--green-deep);color:#fff;padding:5px 14px;border-radius:20px;cursor:pointer;transition:all 0.15s;margin-left:12px;vertical-align:middle;">Save ✓</button>` : ''}`;
   const lockNote = !canEdit
-    ? `<div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:8px 14px;margin-bottom:10px;">
+    ? `<div style="display:flex;align-items:center;gap:8px;background:#f5f5f0;border:1px solid #e0ddd5;border-radius:3px;padding:8px 14px;margin-bottom:10px;">
          <span>🔒</span><span style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--cream-dark);opacity:0.6;">${captainAuthenticated ? 'You can only enter results for ' + team + ' matches' : 'Sign in as a captain or admin to enter results'}</span>
        </div>`
     : '';
@@ -5735,13 +5822,13 @@ function renderPlayoffBracket() {
       ${teamBox(sf2.teamB, sf2Winner===sf2.teamB, false, sf2Done?sf2pts.awayP:undefined)}
     </div>
     <div class="bracket-connector">
-      <div style="height:28px;width:2px;background:rgba(201,168,76,0.3);"></div>
-      <div style="height:2px;width:100%;background:rgba(201,168,76,0.3);"></div>
-      <div style="height:24px;width:2px;background:rgba(201,168,76,0.3);"></div>
-      <div style="height:2px;width:100%;background:rgba(201,168,76,0.3);"></div>
-      <div style="height:24px;width:2px;background:rgba(201,168,76,0.3);"></div>
-      <div style="height:2px;width:100%;background:rgba(201,168,76,0.3);"></div>
-      <div style="height:28px;width:2px;background:rgba(201,168,76,0.3);"></div>
+      <div style="height:28px;width:2px;background:#e0ddd5;"></div>
+      <div style="height:2px;width:100%;background:#e0ddd5;"></div>
+      <div style="height:24px;width:2px;background:#e0ddd5;"></div>
+      <div style="height:2px;width:100%;background:#e0ddd5;"></div>
+      <div style="height:24px;width:2px;background:#e0ddd5;"></div>
+      <div style="height:2px;width:100%;background:#e0ddd5;"></div>
+      <div style="height:28px;width:2px;background:#e0ddd5;"></div>
     </div>
     <div class="bracket-col" style="justify-content:center;">
       <div class="bracket-col-label">Final</div>
@@ -5750,9 +5837,9 @@ function renderPlayoffBracket() {
       ${teamBox(playoffState.finalTeamB||sf2Winner||null, finWinner===playoffState.finalTeamB, finWinner===playoffState.finalTeamB, finDone?finpts.awayP:undefined)}
     </div>
     <div class="bracket-connector">
-      <div style="flex:1;width:2px;background:rgba(201,168,76,0.3);"></div>
-      <div style="height:2px;width:100%;background:rgba(201,168,76,0.3);"></div>
-      <div style="flex:1;width:2px;background:rgba(201,168,76,0.3);"></div>
+      <div style="flex:1;width:2px;background:#e0ddd5;"></div>
+      <div style="height:2px;width:100%;background:#e0ddd5;"></div>
+      <div style="flex:1;width:2px;background:#e0ddd5;"></div>
     </div>
     <div class="bracket-col" style="justify-content:center;">
       <div class="bracket-col-label">Champion</div>
@@ -5768,17 +5855,17 @@ function renderPlayoffStats() {
   if (sf1El) {
     const c = count(playoffState.sf1Results);
     sf1El.textContent = `${c}/10`;
-    sf1El.style.color = c === 10 ? '#00e060' : c > 0 ? 'var(--gold)' : 'var(--cream-dark)';
+    sf1El.style.color = c === 10 ? '#2e7d32' : c > 0 ? 'var(--green-deep)' : 'var(--cream-dark)';
   }
   if (sf2El) {
     const c = count(playoffState.sf2Results);
     sf2El.textContent = `${c}/10`;
-    sf2El.style.color = c === 10 ? '#00e060' : c > 0 ? 'var(--gold)' : 'var(--cream-dark)';
+    sf2El.style.color = c === 10 ? '#2e7d32' : c > 0 ? 'var(--green-deep)' : 'var(--cream-dark)';
   }
   if (finEl) {
     const c = count(playoffState.finalResults);
     finEl.textContent = `${c}/10`;
-    finEl.style.color = c === 10 ? '#00e060' : c > 0 ? 'var(--gold)' : 'var(--cream-dark)';
+    finEl.style.color = c === 10 ? '#2e7d32' : c > 0 ? 'var(--green-deep)' : 'var(--cream-dark)';
   }
 }
 
@@ -5823,11 +5910,11 @@ async function renderPlayoffs() {
   if (signInBanner) {
     if (!isAdmin && !isCaptain) {
       signInBanner.innerHTML = `
-        <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+        <div style="background:#f5f5f0;border:1px solid #e0ddd5;border-radius:6px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
           <span style="font-family:'Courier Prime',monospace;font-size:11px;color:var(--cream-dark);letter-spacing:1px;">🔒 Sign in to enter playoff results</span>
           <div style="display:flex;gap:8px;">
-            <button onclick="showPage('results',null)" style="background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:7px 14px;border-radius:3px;cursor:pointer;">Captain Login</button>
-            <button onclick="showPage('admin',null)" style="background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:7px 14px;border-radius:3px;cursor:pointer;">Admin Login</button>
+            <button onclick="showPage('results',null)" style="background:var(--green-deep);border:1px solid var(--green-deep);color:#fff;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:7px 14px;border-radius:3px;cursor:pointer;">Captain Login</button>
+            <button onclick="showPage('admin',null)" style="background:var(--green-deep);border:1px solid var(--green-deep);color:#fff;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:1px;padding:7px 14px;border-radius:3px;cursor:pointer;">Admin Login</button>
           </div>
         </div>`;
     } else {
@@ -5840,14 +5927,14 @@ async function renderPlayoffs() {
     const team = captainSession?.team;
     const isMyMatch = isCaptain && (team === teamA || team === teamB);
     const myMatchBadge = isMyMatch
-      ? `<span style="font-family:'Courier Prime',monospace;font-size:9px;background:rgba(0,200,80,0.15);color:#00e060;border:1px solid #00c050;padding:2px 8px;border-radius:2px;margin-left:8px;letter-spacing:1px;">YOUR MATCH</span>`
+      ? `<span style="font-family:'Courier Prime',monospace;font-size:9px;background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;padding:2px 8px;border-radius:2px;margin-left:8px;letter-spacing:1px;">YOUR MATCH</span>`
       : '';
     const lockNote = (!isAdmin && !isMyMatch && isCaptain)
-      ? `<div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:8px 14px;margin-bottom:10px;">
+      ? `<div style="display:flex;align-items:center;gap:8px;background:#f5f5f0;border:1px solid #e0ddd5;border-radius:3px;padding:8px 14px;margin-bottom:10px;">
            <span>🔒</span><span style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--cream-dark);opacity:0.6;">You can only enter results for ${team} matches</span>
          </div>`
       : (!isAdmin && !isCaptain)
-      ? `<div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:8px 14px;margin-bottom:10px;">
+      ? `<div style="display:flex;align-items:center;gap:8px;background:#f5f5f0;border:1px solid #e0ddd5;border-radius:3px;padding:8px 14px;margin-bottom:10px;">
            <span>🔒</span><span style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--cream-dark);opacity:0.6;">Sign in as a captain or admin to enter results</span>
          </div>`
       : '';
@@ -5857,12 +5944,12 @@ async function renderPlayoffs() {
     const saveBtnHeader = canEdit
       ? `<button onclick="saveAllPlayoffResults('${matchId}')" style="
           font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
-          background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.5);
-          color:var(--gold);padding:5px 14px;border-radius:20px;cursor:pointer;
+          background:var(--green-deep);border:1px solid var(--green-deep);
+          color:#fff;padding:5px 14px;border-radius:20px;cursor:pointer;
           transition:all 0.15s;margin-left:12px;vertical-align:middle;
           -webkit-tap-highlight-color:transparent;"
-          onmouseover="this.style.background='rgba(201,168,76,0.25)'"
-          onmouseout="this.style.background='rgba(201,168,76,0.15)'">
+          onmouseover="this.style.background='var(--green-mid)'"
+          onmouseout="this.style.background='var(--green-deep)'">
           Save ✓
         </button>`
       : '';
@@ -6070,7 +6157,7 @@ function renderSeasonStats() {
   remainEl.textContent = remaining;
 
   // Color remaining red if season is over, gold if in progress
-  remainEl.style.color = remaining === 0 ? '#00e060' : remaining < 50 ? '#ff4da6' : 'var(--gold)';
+  remainEl.style.color = remaining === 0 ? '#2e7d32' : remaining < 50 ? '#c62828' : 'var(--green-deep)';
 }
 
 function renderLatestBanner() {
@@ -6144,9 +6231,9 @@ function renderAnnouncementHistory() {
   const el = document.getElementById('announcement-history');
   if (!el) return;
   if (!announcements.length) { el.innerHTML = ''; return; }
-  el.innerHTML = `<h4 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:12px;font-size:16px;">Posted Announcements (${announcements.length})</h4>` +
+  el.innerHTML = `<h4 style="font-family:'Playfair Display',serif;color:var(--green-deep);margin-bottom:12px;font-size:16px;">Posted Announcements (${announcements.length})</h4>` +
     announcements.map((a) => `
-      <div style="background:rgba(0,0,0,0.2);border:1px solid rgba(201,168,76,0.15);border-radius:3px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="background:#f5f5f0;border:1px solid #e0ddd5;border-radius:3px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px;">
         <div style="flex:1;">
           <div style="font-size:15px;color:var(--cream);">${a.text}</div>
           <div style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--cream-dark);opacity:0.6;margin-top:4px;">${a.author} · ${formatTS(a.ts)}</div>
@@ -6285,14 +6372,14 @@ function renderMatchResults() {
         const amendedBadge = r.amended ? `<span class="result-amended">AMENDED</span>` : '';
         return `<div class="result-log-row">
           <div class="result-log-tier">T${r.tier}</div>
-          <div>${hp}</div>
-          <div>${ap}</div>
+          <div>${playerLink(hp)}</div>
+          <div>${playerLink(ap)}</div>
           <div class="result-log-score">${r.result||'—'}${amendedBadge}</div>
           <div class="result-log-ts">${tsStr}</div>
         </div>`;
       }).join('');
       return `<div style="margin-bottom:16px;">
-        <div style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:1px;color:var(--cream-dark);opacity:0.7;padding:4px 12px 4px;border-bottom:1px solid rgba(255,255,255,0.06);">${matchup}</div>
+        <div style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:1px;color:var(--cream-dark);opacity:0.7;padding:4px 12px 4px;border-bottom:1px solid #e0ddd5;">${matchup}</div>
         <div class="result-log-header">
           <span>Tier</span><span>${rows[0].home}</span><span>${rows[0].away}</span><span>Result</span><span>Entered</span>
         </div>
@@ -6304,7 +6391,7 @@ function renderMatchResults() {
     const weekData = !isPlayoff ? state.schedule.find(s => String(s.week) === String(w)) : null;
     const weekDate = weekData?.date || '';
     const weekLabel = isPlayoff ? w : `Week ${w}`;
-    const weekLabelStyle = isPlayoff ? 'color:var(--gold);' : '';
+    const weekLabelStyle = isPlayoff ? 'color:var(--green-deep);' : '';
     return `<div class="results-week-block">
       <div class="results-week-label" style="${weekLabelStyle}">
         ${weekLabel} <span style="font-size:13px;font-style:italic;opacity:0.6;">${weekDate}</span>
@@ -6512,11 +6599,11 @@ function renderCaptainMgmtTable() {
     const player = state.players.find(p => p.name === c.name);
     const phone = player?.cell || '—';
     return `<tr>
-      <td style="font-size:15px;font-family:'Playfair Display',serif;">${c.name}</td>
+      <td style="font-size:15px;font-family:'Playfair Display',serif;">${playerLink(c.name)}</td>
       <td style="font-size:13px;font-style:italic;color:var(--cream-dark);">${c.team}</td>
       <td><span class="tier-pill" style="font-size:11px;">${c.username}</span></td>
       <td>
-        <span style="font-family:'Courier Prime',monospace;font-size:13px;background:rgba(0,0,0,0.3);padding:3px 10px;border-radius:3px;border:1px solid rgba(201,168,76,0.2);">${currentPass}</span>
+        <span style="font-family:'Courier Prime',monospace;font-size:13px;background:#f5f5f0;padding:3px 10px;border-radius:3px;border:1px solid #e0ddd5;">${currentPass}</span>
       </td>
       <td>
         <input class="form-input" id="newpass-${c.username}"
@@ -6923,7 +7010,7 @@ function renderAuditLog() {
         <div class="stat-lbl">Total Entries</div>
       </div>
       <div class="stat-box" style="min-width:100px;padding:12px 16px;">
-        <div class="stat-val" style="font-size:28px;color:#00e060;">${captainEntries}</div>
+        <div class="stat-val" style="font-size:28px;color:#2e7d32;">${captainEntries}</div>
         <div class="stat-lbl">By Captains</div>
       </div>
       <div class="stat-box" style="min-width:100px;padding:12px 16px;">
@@ -7000,10 +7087,10 @@ function renderAuditLog() {
         return `<div class="audit-entry ${r.amended ? 'amended-entry' : ''}">
           <div class="audit-header">
             <div class="audit-tier">T${r.tier}</div>
-            <div>${hp}</div>
-            <div>${ap}</div>
+            <div>${playerLink(hp)}</div>
+            <div>${playerLink(ap)}</div>
             <div class="audit-score">${r.result || '—'}</div>
-            <div style="font-size:13px;">${winnerName}</div>
+            <div style="font-size:13px;">${winnerName ? playerLink(winnerName) : '—'}</div>
             <div class="audit-by ${role}" title="${byLabel}">${shortBy}</div>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
               ${statusBadge}
@@ -7035,7 +7122,7 @@ function renderAuditLog() {
     const isPlayoff = String(w).startsWith('Playoff');
     const weekLabel = isPlayoff ? w : `Week ${w}`;
     return `<div class="audit-week-block">
-      <div class="results-week-label" style="${isPlayoff ? 'color:var(--gold);' : ''}">
+      <div class="results-week-label" style="${isPlayoff ? 'color:var(--green-deep);' : ''}">
         ${weekLabel}
         <span style="font-size:13px;font-style:italic;opacity:0.6;">${weekDate}</span>
       </div>
