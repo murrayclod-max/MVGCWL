@@ -2893,7 +2893,7 @@ async function sbUploadFile(file, folder) {
 
     // Try with publishable key first, fall back to anon key
     for (const key of [SB_KEY, SB_ANON]) {
-      const r = await fetch(`${SB_URL}/storage/v1/object/media/${path}`, {
+      const r = await fetch(`${SB_URL}/storage/v1/object/Media/${path}`, {
         method: 'POST',
         headers: {
           'apikey': key,
@@ -2905,7 +2905,7 @@ async function sbUploadFile(file, folder) {
       });
       const txt = await r.text();
       console.log('Upload result:', r.status, txt);
-      if (r.ok) return `${SB_URL}/storage/v1/object/public/media/${path}`;
+      if (r.ok) return `${SB_URL}/storage/v1/object/public/Media/${path}`;
       if (r.status !== 401) {
         showToast('Upload failed ' + r.status + ': ' + txt.substring(0, 60));
         return null;
